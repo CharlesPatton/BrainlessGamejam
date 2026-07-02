@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://dqqj4g074c2cm"]
+
+[ext_resource type="Script" uid="uid://b82kay58w7l47" path="res://main.gd" id="1_d21ai"]
+[ext_resource type="Script" uid="uid://blolh3p1a8565" path="res://character_body_2d.gd" id="1_epypp"]
+[ext_resource type="Texture2D" uid="uid://bjc1tkwuq0y7p" path="res://c26dbd8e0d813f2963ec16a484acc26f.png" id="2_0hol4"]
+[ext_resource type="Texture2D" uid="uid://djvqjk5takxg0" path="res://OIP.webp" id="3_q6r6c"]
+[ext_resource type="Texture2D" uid="uid://co5okifted1dd" path="res://icon.svg" id="4_0hol4"]
+[ext_resource type="Script" uid="uid://cfxdia83t8i0j" path="res://bullet.gd" id="4_q6r6c"]
+[ext_resource type="Script" uid="uid://djybwwl87ida4" path="res://character_body_2d_2.gd" id="5_kdubu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdubu"]
+size = Vector2(53, 57)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6r6c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d21ai"]
+size = Vector2(37, 33)
+
+[node name="Node2D" type="Node2D" unique_id=426656197]
+position = Vector2(519, 90)
+script = ExtResource("1_d21ai")
+
+[node name="player" type="CharacterBody2D" parent="." unique_id=1203201962]
+position = Vector2(24, 453)
+script = ExtResource("1_epypp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=343135727]
+position = Vector2(-0.5, -7.5)
+shape = SubResource("RectangleShape2D_kdubu")
+
+[node name="Sprite2D" type="Sprite2D" parent="player" unique_id=1104222069]
+position = Vector2(-1.75, -7.5)
+scale = Vector2(0.068685375, 0.06505101)
+texture = ExtResource("2_0hol4")
+
+[node name="bullet" type="Area2D" parent="player" unique_id=205223086]
+unique_name_in_owner = true
+position = Vector2(-1, -5)
+collision_layer = 2
+script = ExtResource("4_q6r6c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/bullet" unique_id=335306076]
+shape = SubResource("RectangleShape2D_q6r6c")
+
+[node name="Sprite2D" type="Sprite2D" parent="player/bullet" unique_id=1109413674]
+position = Vector2(-9.536743e-07, 1.000001)
+scale = Vector2(0.11718753, 0.12109376)
+texture = ExtResource("4_0hol4")
+
+[node name="ShootCoolDown" type="Timer" parent="player" unique_id=1489054631]
+
+[node name="enemy" type="CharacterBody2D" parent="." unique_id=1616742647]
+script = ExtResource("5_kdubu")
+
+[node name="hitShape" type="Area2D" parent="enemy" unique_id=1210420208]
+collision_mask = 2
+
+[node name="hitDetectionShape" type="CollisionShape2D" parent="enemy/hitShape" unique_id=2033547012]
+position = Vector2(1, -2.5)
+shape = SubResource("RectangleShape2D_d21ai")
+
+[node name="shape" type="CollisionShape2D" parent="enemy" unique_id=705294434]
+position = Vector2(1, -2.5)
+shape = SubResource("RectangleShape2D_d21ai")
+
+[node name="Sprite2D" type="Sprite2D" parent="enemy" unique_id=220554073]
+position = Vector2(3.5, -3)
+scale = Vector2(0.07383971, 0.08)
+texture = ExtResource("3_q6r6c")
+
+[node name="bullet" type="Area2D" parent="enemy" unique_id=2111196083]
+position = Vector2(-1, -5)
+collision_layer = 4
+script = ExtResource("4_q6r6c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy/bullet" unique_id=627546963]
+shape = SubResource("RectangleShape2D_q6r6c")
+
+[node name="Sprite2D" type="Sprite2D" parent="enemy/bullet" unique_id=1649766637]
+position = Vector2(-9.536743e-07, 1.000001)
+scale = Vector2(0.11718753, 0.12109376)
+texture = ExtResource("4_0hol4")
+
+[node name="ShootCoolDown" type="Timer" parent="enemy" unique_id=140945692]
+
+[connection signal="timeout" from="player/ShootCoolDown" to="player" method="_on_shoot_cool_down_timeout"]
+[connection signal="area_entered" from="enemy/hitShape" to="enemy" method="_on_hit_shape_area_entered"]
+[connection signal="timeout" from="enemy/ShootCoolDown" to="enemy" method="_on_shoot_cool_down_timeout"]
