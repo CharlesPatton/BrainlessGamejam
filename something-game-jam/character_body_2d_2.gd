@@ -1,21 +1,49 @@
 extends CharacterBody2D
 
+@export_enum("IDLE", "ATTACKING", "RETREATING") var npc_state
+
 var health = 10
 @onready var bullet = $bullet
 var canShoot = true
 
+@export var movement_speed = 200
+
+@onready var nav_agent = $NavigationAgent2D
+@onready var player = get_tree().current_scene.get_node("player")
+@onready var direction : Vector2
+
+
 func _physics_process(delta: float) -> void:
 	if health < 1:
 		queue_free()
-		
-	if global_position.distance_to(get_parent().get_node("player").global_position) > 200:
-		global_position = global_position.move_toward(get_parent().get_node("player").global_position, 200 * delta)
+	
+	# Connects the timeout to the function so that we don't call it every frame and can instead just use a
+	#  repeated timer while still having access to delta
+	$ShootCoolDown.connect("timeout", shoot.bind(delta))
+	
+	# Sets the target position as the player no matter what state it's in
+	nav_agent.target_position = player.global_position
+	
+	match npc_state:
+		# Later on we might wanna add a class type as well to determine how they actually fight
+		# but this is good for a melee character, they just attack and retreat when their health is low
+		"ATTACKING":
+			direction = global_position.direction_to(nav_agent.get_next_path_position())
+			velocity = velocity.lerp(direction * movement_speed, delta)
+		"RETREATING":
+			direction = global_position.direction_to(nav_agent.get_next_path_position())
+			velocity = velocity.lerp(direction * -movement_speed, delta)
+	
+	if health < 3:
+		npc_state = "RETREATING"
 	else:
-		shoot(delta)
+		npc_state = "ATTACKING"
 	
+	#if global_position.distance_to(get_parent().get_node("player").global_position) > 200:
+		#global_position = global_position.move_toward(get_parent().get_node("player").global_position, 200 * delta)
+	#else:
+		#shoot(delta)
 	move_and_slide()
-	
-	pass
 
 
 func shoot(delta):

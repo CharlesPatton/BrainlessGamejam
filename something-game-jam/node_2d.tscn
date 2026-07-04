@@ -20,6 +20,14 @@ size = Vector2(43.75, 9)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d21ai"]
 size = Vector2(37, 33)
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_rj586"]
+vertices = PackedVector2Array(1115.0078, 624.96094, 23.007813, 621.03125, 23.976563, 15.9921875, 1115.9766, 15)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(14, 6, 1126, 5, 1125, 635, 13, 631)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4d7sh"]
+size = Vector2(20, 606)
+
 [node name="Node2D" type="Node2D" unique_id=426656197]
 script = ExtResource("1_d21ai")
 
@@ -69,6 +77,7 @@ wait_time = 0.5
 [node name="enemy" type="CharacterBody2D" parent="." unique_id=1616742647]
 position = Vector2(519, 90)
 script = ExtResource("5_kdubu")
+npc_state = 1
 
 [node name="hitShape" type="Area2D" parent="enemy" unique_id=1210420208]
 collision_mask = 2
@@ -100,6 +109,45 @@ scale = Vector2(0.11718753, 0.12109376)
 texture = ExtResource("4_0hol4")
 
 [node name="ShootCoolDown" type="Timer" parent="enemy" unique_id=140945692]
+autostart = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="enemy" unique_id=914926041]
+debug_enabled = true
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=11760853]
+navigation_polygon = SubResource("NavigationPolygon_rj586")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1811948047]
+position = Vector2(24, 293)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1620186054]
+position = Vector2(0, 23)
+shape = SubResource("RectangleShape2D_4d7sh")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=506861273]
+position = Vector2(1118, 293)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=790925049]
+position = Vector2(0, 23)
+shape = SubResource("RectangleShape2D_4d7sh")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=410435213]
+position = Vector2(532.00006, 622)
+rotation = -1.5707964
+scale = Vector2(1, 1.8399987)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=758914130]
+position = Vector2(0, 23)
+shape = SubResource("RectangleShape2D_4d7sh")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=1361575297]
+position = Vector2(526.00006, 23)
+rotation = -1.5707964
+scale = Vector2(1, 1.8399987)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=255403193]
+position = Vector2(0, 23)
+shape = SubResource("RectangleShape2D_4d7sh")
 
 [connection signal="timeout" from="player/ShootCoolDown" to="player" method="_on_shoot_cool_down_timeout"]
 [connection signal="timeout" from="player/swingCooldown" to="player" method="_on_swing_cooldown_timeout"]
