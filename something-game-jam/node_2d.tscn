@@ -5,23 +5,26 @@
 [ext_resource type="Texture2D" uid="uid://bjc1tkwuq0y7p" path="res://c26dbd8e0d813f2963ec16a484acc26f.png" id="2_0hol4"]
 [ext_resource type="Texture2D" uid="uid://djvqjk5takxg0" path="res://OIP.webp" id="3_q6r6c"]
 [ext_resource type="Texture2D" uid="uid://co5okifted1dd" path="res://icon.svg" id="4_0hol4"]
-[ext_resource type="Script" uid="uid://cfxdia83t8i0j" path="res://bullet.gd" id="4_q6r6c"]
+[ext_resource type="Script" path="res://bullet.gd" id="4_q6r6c"]
 [ext_resource type="Script" uid="uid://djybwwl87ida4" path="res://character_body_2d_2.gd" id="5_kdubu"]
+[ext_resource type="Texture2D" uid="uid://phingl88oxev" path="res://sword_temp.png" id="6_rj586"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdubu"]
 size = Vector2(53, 57)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6r6c"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rj586"]
+size = Vector2(43.75, 9)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d21ai"]
 size = Vector2(37, 33)
 
 [node name="Node2D" type="Node2D" unique_id=426656197]
-position = Vector2(519, 90)
 script = ExtResource("1_d21ai")
 
 [node name="player" type="CharacterBody2D" parent="." unique_id=1203201962]
-position = Vector2(24, 453)
+position = Vector2(519, 453)
 script = ExtResource("1_epypp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=343135727]
@@ -49,7 +52,22 @@ texture = ExtResource("4_0hol4")
 
 [node name="ShootCoolDown" type="Timer" parent="player" unique_id=1489054631]
 
+[node name="weapon" type="Area2D" parent="player" unique_id=1831538507]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/weapon" unique_id=193124484]
+position = Vector2(21, -2)
+shape = SubResource("RectangleShape2D_rj586")
+
+[node name="Sprite2D" type="Sprite2D" parent="player/weapon" unique_id=1540796538]
+rotation = 1.5707964
+texture = ExtResource("6_rj586")
+
+[node name="swingCooldown" type="Timer" parent="player" unique_id=1231052410]
+wait_time = 0.5
+
 [node name="enemy" type="CharacterBody2D" parent="." unique_id=1616742647]
+position = Vector2(519, 90)
 script = ExtResource("5_kdubu")
 
 [node name="hitShape" type="Area2D" parent="enemy" unique_id=1210420208]
@@ -84,5 +102,6 @@ texture = ExtResource("4_0hol4")
 [node name="ShootCoolDown" type="Timer" parent="enemy" unique_id=140945692]
 
 [connection signal="timeout" from="player/ShootCoolDown" to="player" method="_on_shoot_cool_down_timeout"]
+[connection signal="timeout" from="player/swingCooldown" to="player" method="_on_swing_cooldown_timeout"]
 [connection signal="area_entered" from="enemy/hitShape" to="enemy" method="_on_hit_shape_area_entered"]
 [connection signal="timeout" from="enemy/ShootCoolDown" to="enemy" method="_on_shoot_cool_down_timeout"]

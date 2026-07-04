@@ -6,7 +6,7 @@ var canShoot = true
 
 func _physics_process(delta: float) -> void:
 	if health < 1:
-		get_parent().remove_child($enemy)
+		queue_free()
 		
 	if global_position.distance_to(get_parent().get_node("player").global_position) > 200:
 		global_position = global_position.move_toward(get_parent().get_node("player").global_position, 200 * delta)

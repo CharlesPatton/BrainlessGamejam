@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bp2nquavs53va"]
+
+[ext_resource type="Script" uid="uid://c3kegnjlsbe57" path="res://shop.gd" id="1_viryw"]
+
+[node name="shop" type="Control" unique_id=666448318]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_viryw")
+
+[node name="map" type="Button" parent="." unique_id=1455547108]
+layout_mode = 0
+offset_left = 466.0
+offset_top = 269.0
+offset_right = 573.0
+offset_bottom = 300.0
+text = "Back To Map"
+
+[connection signal="pressed" from="map" to="." method="_on_map_pressed"]
