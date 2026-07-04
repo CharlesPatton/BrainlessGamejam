@@ -8,8 +8,10 @@ var canSwing = true
 #PLAYER THINGS
 var HEALTH = 20
 var MELEE_DAMAGE = 2
+var SWING_SPEED = 0.1
 var RANGE_DAMAGE = 1
 var SPEED = 3
+
 
 func _process(delta: float) -> void:
 	move_player()
@@ -47,9 +49,9 @@ func shoot(delta):
 		weapon.rotate(weapon.get_angle_to(get_global_mouse_position()) - PI/6)
 		
 		var tween = get_tree().create_tween()
-		tween.tween_property(weapon, "rotation", weapon.rotation + (PI/3), 0.5)
+		tween.tween_property(weapon, "rotation", weapon.rotation + (PI/3), SWING_SPEED)
 		
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(SWING_SPEED).timeout
 		endSwing()
 
 
