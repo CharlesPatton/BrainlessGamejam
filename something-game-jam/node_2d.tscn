@@ -15,7 +15,7 @@ size = Vector2(53, 57)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6r6c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rj586"]
-size = Vector2(43.75, 9)
+size = Vector2(70.875, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d21ai"]
 size = Vector2(37, 33)
@@ -58,17 +58,20 @@ position = Vector2(-9.536743e-07, 1.000001)
 scale = Vector2(0.11718753, 0.12109376)
 texture = ExtResource("4_0hol4")
 
+[node name="Timer" type="Timer" parent="player/bullet" unique_id=545835273]
+
 [node name="ShootCoolDown" type="Timer" parent="player" unique_id=1489054631]
 
 [node name="weapon" type="Area2D" parent="player" unique_id=1831538507]
-visible = false
+position = Vector2(1, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player/weapon" unique_id=193124484]
-position = Vector2(21, -2)
+position = Vector2(34.5625, -2)
 shape = SubResource("RectangleShape2D_rj586")
 
 [node name="Sprite2D" type="Sprite2D" parent="player/weapon" unique_id=1540796538]
 rotation = 1.5707964
+scale = Vector2(1, 1.5233233)
 texture = ExtResource("6_rj586")
 
 [node name="swingCooldown" type="Timer" parent="player" unique_id=1231052410]
@@ -107,6 +110,8 @@ shape = SubResource("RectangleShape2D_q6r6c")
 position = Vector2(-9.536743e-07, 1.000001)
 scale = Vector2(0.11718753, 0.12109376)
 texture = ExtResource("4_0hol4")
+
+[node name="Timer" type="Timer" parent="enemy/bullet" unique_id=152334027]
 
 [node name="ShootCoolDown" type="Timer" parent="enemy" unique_id=140945692]
 autostart = true
@@ -149,7 +154,9 @@ scale = Vector2(1, 1.8399987)
 position = Vector2(0, 23)
 shape = SubResource("RectangleShape2D_4d7sh")
 
+[connection signal="timeout" from="player/bullet/Timer" to="player/bullet" method="_on_timer_timeout"]
 [connection signal="timeout" from="player/ShootCoolDown" to="player" method="_on_shoot_cool_down_timeout"]
 [connection signal="timeout" from="player/swingCooldown" to="player" method="_on_swing_cooldown_timeout"]
 [connection signal="area_entered" from="enemy/hitShape" to="enemy" method="_on_hit_shape_area_entered"]
+[connection signal="timeout" from="enemy/bullet/Timer" to="enemy/bullet" method="_on_timer_timeout"]
 [connection signal="timeout" from="enemy/ShootCoolDown" to="enemy" method="_on_shoot_cool_down_timeout"]

@@ -40,17 +40,23 @@ func shoot(delta):
 		copyb.direction = direction
 		get_tree().current_scene.add_child(copyb)
 		copyb.visible = true
+		copyb.get_node("Timer").start() #Will start timer to remove bullet from scene after 1 seconds
 		
 		$ShootCoolDown.start(.25)
 	
 	if Input.is_action_just_pressed("swing") and canSwing:
 		canSwing = false
 		weapon.show()
-		weapon.rotate(weapon.get_angle_to(get_global_mouse_position()) - PI/6)
+		
+		var direction = weapon.get_angle_to(get_global_mouse_position())
+		weapon.rotate(direction)
+		weapon.move_local_x(20)
+		
+		weapon.rotate(-PI/6)
 		
 		var tween = get_tree().create_tween()
 		tween.tween_property(weapon, "rotation", weapon.rotation + (PI/3), SWING_SPEED)
-		
+
 		await get_tree().create_timer(SWING_SPEED).timeout
 		endSwing()
 
@@ -58,6 +64,7 @@ func shoot(delta):
 func endSwing():
 	weapon.hide()
 	weapon.rotation = 0
+	weapon.global_position = global_position + Vector2(1, -5)
 	$swingCooldown.start()
 	
 

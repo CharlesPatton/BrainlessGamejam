@@ -56,6 +56,7 @@ func shoot(delta):
 		await get_tree().create_timer(.2).timeout
 		get_tree().current_scene.add_child(copyb)
 		copyb.visible = true
+		copyb.get_node("Timer").start() #Will start timer to remove bullet from scene after 1 seconds
 		
 		$ShootCoolDown.start(.15)
 

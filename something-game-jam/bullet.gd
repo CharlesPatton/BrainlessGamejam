@@ -8,3 +8,7 @@ func _physics_process(delta):
 
 func visibility(bool):
 	visible = bool
+
+
+func _on_timer_timeout():
+	queue_free()
