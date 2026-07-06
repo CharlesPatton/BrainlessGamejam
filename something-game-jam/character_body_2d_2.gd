@@ -13,6 +13,10 @@ var canShoot = true
 @onready var direction : Vector2
 
 
+func _ready():
+	var random = RandomNumberGenerator.new()
+	global_position = Vector2(random.randi_range(100, 1000), random.randi_range(100, 550))
+
 func _physics_process(delta: float) -> void:
 	if health < 1:
 		queue_free()
@@ -50,7 +54,8 @@ func shoot(delta):
 	if canShoot:
 		canShoot = false
 		var copyb = bullet.duplicate()
-		var direction = (get_parent().get_node("player").global_position - global_position).normalized()
+		copyb.name = "bullet"
+		var direction = (get_parent().get_parent().get_node("player").global_position - global_position).normalized()
 		copyb.position = self.position
 		copyb.direction = direction
 		await get_tree().create_timer(.2).timeout

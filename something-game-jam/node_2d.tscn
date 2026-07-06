@@ -17,8 +17,8 @@ size = Vector2(53, 57)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rj586"]
 size = Vector2(70.875, 9)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d21ai"]
-size = Vector2(37, 33)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir8iy"]
+size = Vector2(53, 57)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rj586"]
 vertices = PackedVector2Array(1115.0078, 624.96094, 23.007813, 621.03125, 23.976563, 15.9921875, 1115.9766, 15)
@@ -27,6 +27,9 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(14, 6, 1126, 5, 1125, 6
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4d7sh"]
 size = Vector2(20, 606)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d21ai"]
+size = Vector2(37, 33)
 
 [node name="Node2D" type="Node2D" unique_id=426656197]
 script = ExtResource("1_d21ai")
@@ -46,6 +49,7 @@ texture = ExtResource("2_0hol4")
 
 [node name="bullet" type="Area2D" parent="player" unique_id=205223086]
 unique_name_in_owner = true
+visible = false
 position = Vector2(-1, -5)
 collision_layer = 2
 script = ExtResource("4_q6r6c")
@@ -63,6 +67,7 @@ texture = ExtResource("4_0hol4")
 [node name="ShootCoolDown" type="Timer" parent="player" unique_id=1489054631]
 
 [node name="weapon" type="Area2D" parent="player" unique_id=1831538507]
+visible = false
 position = Vector2(1, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player/weapon" unique_id=193124484]
@@ -77,49 +82,15 @@ texture = ExtResource("6_rj586")
 [node name="swingCooldown" type="Timer" parent="player" unique_id=1231052410]
 wait_time = 0.5
 
-[node name="enemy" type="CharacterBody2D" parent="." unique_id=1616742647]
-position = Vector2(519, 90)
-script = ExtResource("5_kdubu")
-npc_state = 1
+[node name="playerHitBox" type="Area2D" parent="player" unique_id=1290796112]
+collision_mask = 4
 
-[node name="hitShape" type="Area2D" parent="enemy" unique_id=1210420208]
-collision_mask = 2
-
-[node name="hitDetectionShape" type="CollisionShape2D" parent="enemy/hitShape" unique_id=2033547012]
-position = Vector2(1, -2.5)
-shape = SubResource("RectangleShape2D_d21ai")
-
-[node name="shape" type="CollisionShape2D" parent="enemy" unique_id=705294434]
-position = Vector2(1, -2.5)
-shape = SubResource("RectangleShape2D_d21ai")
-
-[node name="Sprite2D" type="Sprite2D" parent="enemy" unique_id=220554073]
-position = Vector2(3.5, -3)
-scale = Vector2(0.07383971, 0.08)
-texture = ExtResource("3_q6r6c")
-
-[node name="bullet" type="Area2D" parent="enemy" unique_id=2111196083]
-position = Vector2(-1, -5)
-collision_layer = 4
-script = ExtResource("4_q6r6c")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy/bullet" unique_id=627546963]
-shape = SubResource("RectangleShape2D_q6r6c")
-
-[node name="Sprite2D" type="Sprite2D" parent="enemy/bullet" unique_id=1649766637]
-position = Vector2(-9.536743e-07, 1.000001)
-scale = Vector2(0.11718753, 0.12109376)
-texture = ExtResource("4_0hol4")
-
-[node name="Timer" type="Timer" parent="enemy/bullet" unique_id=152334027]
-
-[node name="ShootCoolDown" type="Timer" parent="enemy" unique_id=140945692]
-autostart = true
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="enemy" unique_id=914926041]
-debug_enabled = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/playerHitBox" unique_id=96223237]
+position = Vector2(-0.5, -7.5)
+shape = SubResource("RectangleShape2D_ir8iy")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=11760853]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_rj586")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1811948047]
@@ -154,9 +125,55 @@ scale = Vector2(1, 1.8399987)
 position = Vector2(0, 23)
 shape = SubResource("RectangleShape2D_4d7sh")
 
+[node name="enemies" type="Node2D" parent="." unique_id=1305229257]
+
+[node name="enemy" type="CharacterBody2D" parent="enemies" unique_id=1616742647]
+position = Vector2(519, 90)
+script = ExtResource("5_kdubu")
+npc_state = 1
+
+[node name="hitShape" type="Area2D" parent="enemies/enemy" unique_id=1210420208]
+collision_mask = 2
+
+[node name="hitDetectionShape" type="CollisionShape2D" parent="enemies/enemy/hitShape" unique_id=2033547012]
+position = Vector2(1, -2.5)
+shape = SubResource("RectangleShape2D_d21ai")
+
+[node name="shape" type="CollisionShape2D" parent="enemies/enemy" unique_id=705294434]
+position = Vector2(1, -2.5)
+shape = SubResource("RectangleShape2D_d21ai")
+
+[node name="Sprite2D" type="Sprite2D" parent="enemies/enemy" unique_id=220554073]
+position = Vector2(3.5, -3)
+scale = Vector2(0.07383971, 0.08)
+texture = ExtResource("3_q6r6c")
+
+[node name="bullet" type="Area2D" parent="enemies/enemy" unique_id=2111196083]
+position = Vector2(-1, -5)
+collision_layer = 4
+script = ExtResource("4_q6r6c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/enemy/bullet" unique_id=627546963]
+shape = SubResource("RectangleShape2D_q6r6c")
+
+[node name="Sprite2D" type="Sprite2D" parent="enemies/enemy/bullet" unique_id=1649766637]
+position = Vector2(-9.536743e-07, 1.000001)
+scale = Vector2(0.11718753, 0.12109376)
+texture = ExtResource("4_0hol4")
+
+[node name="Timer" type="Timer" parent="enemies/enemy/bullet" unique_id=152334027]
+
+[node name="ShootCoolDown" type="Timer" parent="enemies/enemy" unique_id=140945692]
+autostart = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="enemies/enemy" unique_id=914926041]
+debug_enabled = true
+
 [connection signal="timeout" from="player/bullet/Timer" to="player/bullet" method="_on_timer_timeout"]
 [connection signal="timeout" from="player/ShootCoolDown" to="player" method="_on_shoot_cool_down_timeout"]
 [connection signal="timeout" from="player/swingCooldown" to="player" method="_on_swing_cooldown_timeout"]
-[connection signal="area_entered" from="enemy/hitShape" to="enemy" method="_on_hit_shape_area_entered"]
-[connection signal="timeout" from="enemy/bullet/Timer" to="enemy/bullet" method="_on_timer_timeout"]
-[connection signal="timeout" from="enemy/ShootCoolDown" to="enemy" method="_on_shoot_cool_down_timeout"]
+[connection signal="area_entered" from="player/playerHitBox" to="player" method="_on_player_hit_box_area_entered"]
+[connection signal="area_entered" from="enemies/enemy/hitShape" to="enemies/enemy" method="_on_hit_shape_area_entered"]
+[connection signal="area_entered" from="enemies/enemy/bullet" to="player" method="_on_bullet_area_entered"]
+[connection signal="timeout" from="enemies/enemy/bullet/Timer" to="enemies/enemy/bullet" method="_on_timer_timeout"]
+[connection signal="timeout" from="enemies/enemy/ShootCoolDown" to="enemies/enemy" method="_on_shoot_cool_down_timeout"]
