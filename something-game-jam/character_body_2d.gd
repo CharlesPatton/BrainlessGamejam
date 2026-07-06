@@ -56,13 +56,13 @@ func shoot(delta):
 		
 		#rotates to starting angle and then tweens by SWING_SPEED to final angle
 		weapon.rotate(-PI/3)
-		print(weapon.rotation * 180/PI)
+		#print(weapon.rotation * 180/PI)
 		
 		var tween = get_tree().create_tween()
 		tween.tween_property(weapon, "rotation", weapon.rotation + (2 * PI/3), SWING_SPEED)
 		
 		await get_tree().create_timer(SWING_SPEED).timeout
-		print(weapon.rotation * 180/PI)
+		#print(weapon.rotation * 180/PI)
 		endSwing()
 
 
@@ -81,12 +81,8 @@ func _on_swing_cooldown_timeout():
 	canSwing = true
 
 
-func _on_bullet_area_entered(area):
-	#HEALTH -= 1
-	pass
-
-
 func _on_player_hit_box_area_entered(area):
-	print(area.name)
-	if area.name == "bullet":
-		print("hit")
+	if area.get_node("enemyBulletCollision"):
+		pass
+		#print("hit")
+		#HEALTH -= 1

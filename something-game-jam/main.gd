@@ -10,6 +10,8 @@ func _ready():
 	for i in range(num_enemies):
 		await get_tree().create_timer(5 + i).timeout
 		enemies.add_child(copyEnemy)
+		copyEnemy = enemies.get_child(0).duplicate()
+		copyEnemy.health = 10
 		
 
 func _process(delta: float) -> void:

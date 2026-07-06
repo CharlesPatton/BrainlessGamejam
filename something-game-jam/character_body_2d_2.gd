@@ -71,5 +71,8 @@ func _on_shoot_cool_down_timeout() -> void:
 
 
 func _on_hit_shape_area_entered(area: Area2D) -> void:
+	if area.get_node("playerBulletCollision"):
+		health -= 1
+	elif area.name == "weapon":
+		health -= 2
 	print(health)
-	health -= 1

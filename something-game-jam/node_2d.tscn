@@ -54,7 +54,7 @@ position = Vector2(-1, -5)
 collision_layer = 2
 script = ExtResource("4_q6r6c")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player/bullet" unique_id=335306076]
+[node name="playerBulletCollision" type="CollisionShape2D" parent="player/bullet" unique_id=335306076]
 shape = SubResource("RectangleShape2D_q6r6c")
 
 [node name="Sprite2D" type="Sprite2D" parent="player/bullet" unique_id=1109413674]
@@ -69,6 +69,7 @@ texture = ExtResource("4_0hol4")
 [node name="weapon" type="Area2D" parent="player" unique_id=1831538507]
 visible = false
 position = Vector2(1, -5)
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player/weapon" unique_id=193124484]
 position = Vector2(34.5625, -2)
@@ -153,7 +154,7 @@ position = Vector2(-1, -5)
 collision_layer = 4
 script = ExtResource("4_q6r6c")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/enemy/bullet" unique_id=627546963]
+[node name="enemyBulletCollision" type="CollisionShape2D" parent="enemies/enemy/bullet" unique_id=627546963]
 shape = SubResource("RectangleShape2D_q6r6c")
 
 [node name="Sprite2D" type="Sprite2D" parent="enemies/enemy/bullet" unique_id=1649766637]
@@ -174,6 +175,5 @@ debug_enabled = true
 [connection signal="timeout" from="player/swingCooldown" to="player" method="_on_swing_cooldown_timeout"]
 [connection signal="area_entered" from="player/playerHitBox" to="player" method="_on_player_hit_box_area_entered"]
 [connection signal="area_entered" from="enemies/enemy/hitShape" to="enemies/enemy" method="_on_hit_shape_area_entered"]
-[connection signal="area_entered" from="enemies/enemy/bullet" to="player" method="_on_bullet_area_entered"]
 [connection signal="timeout" from="enemies/enemy/bullet/Timer" to="enemies/enemy/bullet" method="_on_timer_timeout"]
 [connection signal="timeout" from="enemies/enemy/ShootCoolDown" to="enemies/enemy" method="_on_shoot_cool_down_timeout"]
