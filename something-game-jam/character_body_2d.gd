@@ -7,16 +7,24 @@ var canSwing = true
 
 #PLAYER THINGS
 var HEALTH = 20
-var MELEE_DAMAGE = 2
+var MELEE_DAMAGE = 4
 var SWING_SPEED = 0.2
 var RANGE_DAMAGE = 1
 var SPEED = 3
 
-
 func _process(delta: float) -> void:
 	move_player()
 	shoot(delta)
-	
+
+func initialize_class(classType: int):
+	if classType == 1:
+		print("I am class 1")
+	elif classType == 2:
+		print("I am class 2")
+	else:
+		print("Class is Unknown")
+
+
 func move_player():
 	if Input.is_action_pressed("up"):
 		self.position.y -= 1 * SPEED

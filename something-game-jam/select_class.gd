@@ -1,5 +1,6 @@
 extends Control
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -10,13 +11,11 @@ func _process(delta):
 	pass
 
 
-func _on_shop_pressed():
-	get_tree().change_scene_to_file("res://shop.tscn")
-
-
-func _on_encounter_pressed():
+func _on_class_1_pressed():
+	playerClass.playerClass = 1
 	get_tree().change_scene_to_file("res://node_2d.tscn")
 
 
-func _on_class_pressed():
-	get_tree().change_scene_to_file("res://select_class.tscn")
+func _on_class_2_pressed():
+	playerClass.playerClass = 2
+	get_tree().change_scene_to_file("res://node_2d.tscn")

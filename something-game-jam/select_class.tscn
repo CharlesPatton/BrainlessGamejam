@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://b1uqmdbksgec3"]
+
+[ext_resource type="Script" uid="uid://da5d2380hwfwg" path="res://select_class.gd" id="1_2rt7b"]
+[ext_resource type="Texture2D" uid="uid://bjc1tkwuq0y7p" path="res://sprites/c26dbd8e0d813f2963ec16a484acc26f.png" id="1_4sjfc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4sjfc"]
+font_size = 100
+
+[node name="selectClass" type="Control" unique_id=735312529]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2rt7b")
+
+[node name="class1" type="Sprite2D" parent="." unique_id=1077999504]
+position = Vector2(267, 194)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_4sjfc")
+
+[node name="Label" type="Label" parent="class1" unique_id=1430799164]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -338.5
+offset_right = -338.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Class 1"
+label_settings = SubResource("LabelSettings_4sjfc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="class1" type="Button" parent="class1" unique_id=1962344075]
+offset_left = -346.66675
+offset_top = -450.0
+offset_right = 370.0
+offset_bottom = 499.99994
+
+[node name="class2" type="Sprite2D" parent="." unique_id=1437560801]
+position = Vector2(680, 198)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_4sjfc")
+
+[node name="Label" type="Label" parent="class2" unique_id=595226709]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -338.5
+offset_right = -338.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Class 2"
+label_settings = SubResource("LabelSettings_4sjfc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="class2" type="Button" parent="class2" unique_id=1597254174]
+offset_left = -346.66675
+offset_top = -450.0
+offset_right = 370.0
+offset_bottom = 499.99994
+
+[connection signal="pressed" from="class1/class1" to="." method="_on_class_1_pressed"]
+[connection signal="pressed" from="class2/class2" to="." method="_on_class_2_pressed"]
