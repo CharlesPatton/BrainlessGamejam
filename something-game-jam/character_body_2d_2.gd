@@ -16,10 +16,22 @@ var canShoot = true
 func _ready():
 	var random = RandomNumberGenerator.new()
 	global_position = Vector2(random.randi_range(100, 1000), random.randi_range(100, 550))
+	$ShootCoolDown.autostart = true
+	if $hitpoints.label_settings:
+		$hitpoints.label_settings = $hitpoints.label_settings.duplicate()
+	$hitpoints.label_settings.font_color = Color(0, 255, 0)
 
 func _physics_process(delta: float) -> void:
-	if health < 1:
+	if self.health < 1:
 		queue_free()
+	
+	$hitpoints.text = str(health)
+	if health <= 3:
+		$hitpoints.label_settings.font_color = Color(255, 0, 0)
+	elif health <= 7:
+		$hitpoints.label_settings.font_color = Color(255, 255, 0)
+	else:
+		$hitpoints.label_settings.font_color = Color(0, 255, 0)
 	
 	# Connects the timeout to the function so that we don't call it every frame and can instead just use a
 	#  repeated timer while still having access to delta
@@ -74,5 +86,6 @@ func _on_hit_shape_area_entered(area: Area2D) -> void:
 	if area.get_node("playerBulletCollision"):
 		health -= 1
 	elif area.name == "weapon":
-		health -= 2
+		health -= 4
+	
 	print(health)

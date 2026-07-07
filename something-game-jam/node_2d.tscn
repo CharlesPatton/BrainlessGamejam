@@ -31,6 +31,8 @@ size = Vector2(20, 606)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d21ai"]
 size = Vector2(37, 33)
 
+[sub_resource type="LabelSettings" id="LabelSettings_rj586"]
+
 [node name="Node2D" type="Node2D" unique_id=426656197]
 script = ExtResource("1_d21ai")
 
@@ -74,6 +76,7 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player/weapon" unique_id=193124484]
 position = Vector2(34.5625, -2)
 shape = SubResource("RectangleShape2D_rj586")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="player/weapon" unique_id=1540796538]
 rotation = 1.5707964
@@ -169,6 +172,16 @@ autostart = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="enemies/enemy" unique_id=914926041]
 debug_enabled = true
+
+[node name="hitpoints" type="Label" parent="enemies/enemy" unique_id=1451400399]
+offset_left = -17.0
+offset_top = -39.0
+offset_right = 23.0
+offset_bottom = -16.0
+text = "10"
+label_settings = SubResource("LabelSettings_rj586")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="player/bullet/Timer" to="player/bullet" method="_on_timer_timeout"]
 [connection signal="timeout" from="player/ShootCoolDown" to="player" method="_on_shoot_cool_down_timeout"]

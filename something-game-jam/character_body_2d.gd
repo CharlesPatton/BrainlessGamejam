@@ -48,6 +48,7 @@ func shoot(delta):
 	if Input.is_action_just_pressed("swing") and canSwing:
 		canSwing = false
 		weapon.show()
+		weapon.get_node("CollisionShape2D").disabled = false
 		
 		#gets angle of mouse in relation to weapon and rotates weapon to that angle
 		var direction = weapon.get_angle_to(get_global_mouse_position())
@@ -68,6 +69,7 @@ func shoot(delta):
 
 func endSwing():
 	weapon.hide()
+	weapon.get_node("CollisionShape2D").disabled = true
 	weapon.rotation = 0
 	weapon.global_position = global_position + Vector2(1, -5)
 	$swingCooldown.start()
