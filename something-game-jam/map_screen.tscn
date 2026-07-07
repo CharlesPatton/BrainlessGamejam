@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://caj74gsoqtdk3"]
+
+[ext_resource type="Script" uid="uid://bq667rym6ggdk" path="res://map_screen.gd" id="1_wcttb"]
+[ext_resource type="Script" uid="uid://pa720c2mm72o" path="res://level.gd" id="2_vmmbu"]
+[ext_resource type="Texture2D" uid="uid://dogbvcstiab3c" path="res://sprites/1811794.png" id="3_pc8n1"]
+
+[node name="MapScreen" type="Node2D" unique_id=406772114]
+script = ExtResource("1_wcttb")
+
+[node name="level1" type="Node2D" parent="." unique_id=2049721087]
+position = Vector2(135, 303)
+script = ExtResource("2_vmmbu")
+
+[node name="Button" type="Button" parent="level1" unique_id=335369879]
+offset_left = -20.0
+offset_top = -16.0
+offset_right = 18.0
+offset_bottom = 17.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="level1/Button" unique_id=43248207]
+position = Vector2(20, 16)
+scale = Vector2(0.013678994, 0.013333334)
+texture = ExtResource("3_pc8n1")
+
+[node name="level2" type="Node2D" parent="." unique_id=360555361]
+position = Vector2(343, 298)
+script = ExtResource("2_vmmbu")
+
+[node name="Button" type="Button" parent="level2" unique_id=585065869]
+offset_left = -20.0
+offset_top = -16.0
+offset_right = 18.0
+offset_bottom = 17.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="level2/Button" unique_id=1999902451]
+position = Vector2(20, 16)
+scale = Vector2(0.013678994, 0.013333334)
+texture = ExtResource("3_pc8n1")
+
+[node name="level3" type="Node2D" parent="." unique_id=1533374416]
+position = Vector2(572, 298)
+script = ExtResource("2_vmmbu")
+
+[node name="Button" type="Button" parent="level3" unique_id=2075666588]
+offset_left = -20.0
+offset_top = -16.0
+offset_right = 18.0
+offset_bottom = 17.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="level3/Button" unique_id=576219347]
+position = Vector2(20, 16)
+scale = Vector2(0.013678994, 0.013333334)
+texture = ExtResource("3_pc8n1")
+
+[node name="level4" type="Node2D" parent="." unique_id=1825411245]
+position = Vector2(808, 304)
+script = ExtResource("2_vmmbu")
+
+[node name="Button" type="Button" parent="level4" unique_id=5623720]
+offset_left = -20.0
+offset_top = -16.0
+offset_right = 18.0
+offset_bottom = 17.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="level4/Button" unique_id=1496516663]
+position = Vector2(20.062517, 14.5)
+scale = Vector2(0.013613838, 0.014583333)
+texture = ExtResource("3_pc8n1")
+
+[node name="level5" type="Node2D" parent="." unique_id=1687688873]
+position = Vector2(1042, 303)
+scale = Vector2(0.075, 0.075)
+script = ExtResource("2_vmmbu")
+
+[node name="Button" type="Button" parent="level5" unique_id=1852460194]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -999.99963
+offset_top = -1386.6666
+offset_right = 927.00037
+offset_bottom = 1021.3334
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("3_pc8n1")
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="tempLabel" type="Label" parent="." unique_id=355864717]
+offset_left = 81.0
+offset_top = 108.0
+offset_right = 1056.0
+offset_bottom = 131.0
+text = "left to right click order, random might be too much work maybe just make 3 of these maps and have it be predetermined with 
+random items. also the shop will go here eventually"
