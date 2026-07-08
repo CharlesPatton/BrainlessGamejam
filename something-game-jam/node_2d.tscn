@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b82kay58w7l47" path="res://main.gd" id="1_d21ai"]
 [ext_resource type="Script" uid="uid://blolh3p1a8565" path="res://character_body_2d.gd" id="1_epypp"]
 [ext_resource type="Texture2D" uid="uid://bjc1tkwuq0y7p" path="res://sprites/c26dbd8e0d813f2963ec16a484acc26f.png" id="2_0hol4"]
+[ext_resource type="PackedScene" uid="uid://b1uqmdbksgec3" path="res://select_class.tscn" id="2_4d7sh"]
 [ext_resource type="Texture2D" uid="uid://djvqjk5takxg0" path="res://sprites/OIP.webp" id="3_q6r6c"]
 [ext_resource type="Texture2D" uid="uid://co5okifted1dd" path="res://sprites/icon.svg" id="4_0hol4"]
 [ext_resource type="Script" uid="uid://cfxdia83t8i0j" path="res://bullet.gd" id="4_q6r6c"]
@@ -35,6 +36,9 @@ size = Vector2(37, 33)
 
 [node name="Node2D" type="Node2D" unique_id=426656197]
 script = ExtResource("1_d21ai")
+
+[node name="selectClass" parent="." unique_id=735312529 instance=ExtResource("2_4d7sh")]
+visible = false
 
 [node name="player" type="CharacterBody2D" parent="." unique_id=1203201962]
 position = Vector2(519, 453)
@@ -183,10 +187,11 @@ label_settings = SubResource("LabelSettings_rj586")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="body_entered" from="player/bullet" to="player" method="_on_bullet_body_entered"]
 [connection signal="timeout" from="player/bullet/Timer" to="player/bullet" method="_on_timer_timeout"]
 [connection signal="timeout" from="player/ShootCoolDown" to="player" method="_on_shoot_cool_down_timeout"]
+[connection signal="body_entered" from="player/weapon" to="player" method="_on_weapon_body_entered"]
 [connection signal="timeout" from="player/swingCooldown" to="player" method="_on_swing_cooldown_timeout"]
 [connection signal="area_entered" from="player/playerHitBox" to="player" method="_on_player_hit_box_area_entered"]
-[connection signal="area_entered" from="enemies/enemy/hitShape" to="enemies/enemy" method="_on_hit_shape_area_entered"]
 [connection signal="timeout" from="enemies/enemy/bullet/Timer" to="enemies/enemy/bullet" method="_on_timer_timeout"]
 [connection signal="timeout" from="enemies/enemy/ShootCoolDown" to="enemies/enemy" method="_on_shoot_cool_down_timeout"]

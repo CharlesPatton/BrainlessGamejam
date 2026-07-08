@@ -19,3 +19,23 @@ func _on_class_1_pressed():
 func _on_class_2_pressed():
 	playerClass.playerClass = 2
 	get_tree().change_scene_to_file("res://node_2d.tscn")
+
+
+func _on_class_3_pressed():
+	playerClass.playerClass = 3
+	get_tree().change_scene_to_file("res://node_2d.tscn")
+
+
+func _on_class_4_pressed():
+	playerClass.playerClass = 4
+	get_tree().change_scene_to_file("res://node_2d.tscn")
+
+
+func _on_class_5_pressed():
+	playerClass.playerClass = 5
+	get_tree().change_scene_to_file("res://node_2d.tscn")
+
+
+func _on_class_6_pressed():
+	playerClass.playerClass = 6
+	get_tree().change_scene_to_file("res://node_2d.tscn")

@@ -2,9 +2,14 @@
 
 [ext_resource type="Script" uid="uid://da5d2380hwfwg" path="res://select_class.gd" id="1_2rt7b"]
 [ext_resource type="Texture2D" uid="uid://bjc1tkwuq0y7p" path="res://sprites/c26dbd8e0d813f2963ec16a484acc26f.png" id="1_4sjfc"]
+[ext_resource type="Texture2D" uid="uid://ls76daoqqgsl" path="res://sprites/little_guy_1.png" id="2_ep2a8"]
+[ext_resource type="Texture2D" uid="uid://de8g18dkq6ryt" path="res://sprites/little_guy_2.png" id="3_hy404"]
+[ext_resource type="Texture2D" uid="uid://c4d5xn46mjwto" path="res://sprites/little_guy_3.png" id="4_fmjc1"]
+[ext_resource type="Texture2D" uid="uid://c0udlrx42lv0u" path="res://sprites/little_guy_4.png" id="5_cbvmh"]
+[ext_resource type="Texture2D" uid="uid://ffcxoy15kfli" path="res://sprites/littlE_guy_5.png" id="6_5lntu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4sjfc"]
-font_size = 100
+font_size = 40
 
 [node name="selectClass" type="Control" unique_id=735312529]
 layout_mode = 3
@@ -16,16 +21,17 @@ grow_vertical = 2
 script = ExtResource("1_2rt7b")
 
 [node name="class1" type="Sprite2D" parent="." unique_id=1077999504]
-position = Vector2(267, 194)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_4sjfc")
+position = Vector2(200, 150)
+texture = ExtResource("2_ep2a8")
 
 [node name="Label" type="Label" parent="class1" unique_id=1430799164]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -338.5
-offset_right = -338.5
+offset_left = -70.0
+offset_top = 20.0
+offset_right = -38.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Class 1"
@@ -34,22 +40,24 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="class1" type="Button" parent="class1" unique_id=1962344075]
-offset_left = -346.66675
-offset_top = -450.0
-offset_right = 370.0
-offset_bottom = 499.99994
+modulate = Color(1, 1, 1, 0)
+offset_left = -71.0
+offset_top = -69.0
+offset_right = 72.0
+offset_bottom = 92.0
 
 [node name="class2" type="Sprite2D" parent="." unique_id=1437560801]
-position = Vector2(680, 198)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_4sjfc")
+position = Vector2(562, 133)
+texture = ExtResource("3_hy404")
 
 [node name="Label" type="Label" parent="class2" unique_id=595226709]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -338.5
-offset_right = -338.5
+offset_left = -66.0
+offset_top = 40.0
+offset_right = -34.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Class 2"
@@ -58,6 +66,110 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="class2" type="Button" parent="class2" unique_id=1597254174]
+modulate = Color(1, 1, 1, 0)
+offset_left = -74.0
+offset_top = -61.0
+offset_right = 77.0
+offset_bottom = 87.0
+
+[node name="class3" type="Sprite2D" parent="." unique_id=2125323699]
+position = Vector2(908, 140)
+texture = ExtResource("4_fmjc1")
+
+[node name="Label" type="Label" parent="class3" unique_id=1882335363]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -63.0
+offset_top = 42.0
+offset_right = -31.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Class 3"
+label_settings = SubResource("LabelSettings_4sjfc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="class3" type="Button" parent="class3" unique_id=1563992659]
+modulate = Color(1, 1, 1, 0)
+offset_left = -66.0
+offset_top = -64.0
+offset_right = 88.0
+offset_bottom = 93.0
+
+[node name="class4" type="Sprite2D" parent="." unique_id=1678625062]
+position = Vector2(200, 400)
+texture = ExtResource("5_cbvmh")
+
+[node name="Label" type="Label" parent="class4" unique_id=814523061]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -69.0
+offset_top = 22.0
+offset_right = -37.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Class 4"
+label_settings = SubResource("LabelSettings_4sjfc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="class4" type="Button" parent="class4" unique_id=1075722040]
+modulate = Color(1, 1, 1, 0)
+offset_left = -78.0
+offset_top = -56.0
+offset_right = 72.0
+offset_bottom = 97.0
+
+[node name="class5" type="Sprite2D" parent="." unique_id=179815735]
+position = Vector2(550, 400)
+texture = ExtResource("6_5lntu")
+
+[node name="Label" type="Label" parent="class5" unique_id=1824328851]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -74.0
+offset_top = 29.0
+offset_right = -42.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Class 5"
+label_settings = SubResource("LabelSettings_4sjfc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="class5" type="Button" parent="class5" unique_id=314338429]
+modulate = Color(1, 1, 1, 0)
+offset_left = -92.0
+offset_top = -71.0
+offset_right = 84.0
+offset_bottom = 103.0
+
+[node name="class6" type="Sprite2D" parent="." unique_id=1207048114]
+position = Vector2(900, 400)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_4sjfc")
+
+[node name="Label" type="Label" parent="class6" unique_id=785928904]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -338.5
+offset_right = -338.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Class 6"
+label_settings = SubResource("LabelSettings_4sjfc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="class6" type="Button" parent="class6" unique_id=448347836]
+modulate = Color(1, 1, 1, 0)
 offset_left = -346.66675
 offset_top = -450.0
 offset_right = 370.0
@@ -65,3 +177,7 @@ offset_bottom = 499.99994
 
 [connection signal="pressed" from="class1/class1" to="." method="_on_class_1_pressed"]
 [connection signal="pressed" from="class2/class2" to="." method="_on_class_2_pressed"]
+[connection signal="pressed" from="class3/class3" to="." method="_on_class_3_pressed"]
+[connection signal="pressed" from="class4/class4" to="." method="_on_class_4_pressed"]
+[connection signal="pressed" from="class5/class5" to="." method="_on_class_5_pressed"]
+[connection signal="pressed" from="class6/class6" to="." method="_on_class_6_pressed"]

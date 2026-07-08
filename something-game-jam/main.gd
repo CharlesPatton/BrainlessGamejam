@@ -3,6 +3,10 @@ extends Node2D
 @onready var enemies = $enemies
 @onready var copyEnemy = $enemies/enemy.duplicate()
 @onready var player = $player
+@onready var selectClass = $selectClass
+
+var char_select = preload("res://select_class.tscn")
+var paused = true
 
 var random = RandomNumberGenerator.new()
 var num_enemies = 0
@@ -14,6 +18,10 @@ func _ready():
 
 
 func _process(delta: float) -> void:
+	#if Input.is_action_pressed("change_class"):
+		#selectClass.visible = not selectClass.visible
+		#paused = not paused
+	
 	if enemies.get_child_count() == 0 and num_enemies * 2 == enemies_spawned:
 		print("ENEMIES GONE")
 		get_tree().change_scene_to_file("res://map.tscn")

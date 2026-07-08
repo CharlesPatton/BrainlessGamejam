@@ -13,3 +13,15 @@ func _process(delta):
 
 func _on_map_pressed():
 	get_tree().change_scene_to_file("res://map.tscn")
+
+
+func _on_item_1_pressed():
+	print("I BOUGHT ITEM 1")
+
+
+func _on_item_2_pressed():
+	print("I BOUGHT ITEM 2")
+
+
+func _on_item_3_pressed():
+	print("I BOUGHT ITEM 3")

@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://bp2nquavs53va"]
 
 [ext_resource type="Script" uid="uid://c3kegnjlsbe57" path="res://shop.gd" id="1_viryw"]
+[ext_resource type="Texture2D" uid="uid://drr7onxga5aff" path="res://sprites/winged_boots_card.png" id="2_fgaav"]
+[ext_resource type="Texture2D" uid="uid://dbjm21otrqev8" path="res://sprites/shield_card.png" id="3_6lah5"]
+[ext_resource type="Texture2D" uid="uid://c20m2ix6yvgp3" path="res://sprites/axe_card.png" id="4_gmb2m"]
 
 [node name="shop" type="Control" unique_id=666448318]
 layout_mode = 3
@@ -13,10 +16,43 @@ script = ExtResource("1_viryw")
 
 [node name="map" type="Button" parent="." unique_id=1455547108]
 layout_mode = 0
-offset_left = 466.0
-offset_top = 269.0
-offset_right = 573.0
-offset_bottom = 300.0
+offset_left = 576.0
+offset_top = 456.0
+offset_right = 683.0
+offset_bottom = 487.0
 text = "Back To Map"
 
+[node name="item_1" type="Sprite2D" parent="." unique_id=600095414]
+position = Vector2(204, 132)
+texture = ExtResource("2_fgaav")
+
+[node name="item_1" type="Button" parent="item_1" unique_id=1784298469]
+offset_left = -128.0
+offset_top = -126.0
+offset_right = 126.0
+offset_bottom = 124.0
+
+[node name="item_2" type="Sprite2D" parent="." unique_id=1777375780]
+position = Vector2(632, 139)
+texture = ExtResource("3_6lah5")
+
+[node name="item_2" type="Button" parent="item_2" unique_id=1401271198]
+offset_left = -127.0
+offset_top = -126.0
+offset_right = 124.0
+offset_bottom = 127.0
+
+[node name="item_3" type="Sprite2D" parent="." unique_id=289244235]
+position = Vector2(995, 138)
+texture = ExtResource("4_gmb2m")
+
+[node name="item_3" type="Button" parent="item_3" unique_id=1769287408]
+offset_left = -129.0
+offset_top = -128.0
+offset_right = 129.0
+offset_bottom = 127.0
+
 [connection signal="pressed" from="map" to="." method="_on_map_pressed"]
+[connection signal="pressed" from="item_1/item_1" to="." method="_on_item_1_pressed"]
+[connection signal="pressed" from="item_2/item_2" to="." method="_on_item_2_pressed"]
+[connection signal="pressed" from="item_3/item_3" to="." method="_on_item_3_pressed"]

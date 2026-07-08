@@ -80,12 +80,3 @@ func shoot(delta):
 
 func _on_shoot_cool_down_timeout() -> void:
 	canShoot = true
-
-
-func _on_hit_shape_area_entered(area: Area2D) -> void:
-	if area.get_node("playerBulletCollision"):
-		health -= 1
-	elif area.name == "weapon":
-		health -= 4
-	
-	print(health)
