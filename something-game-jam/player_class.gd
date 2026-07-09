@@ -5,7 +5,7 @@ var playerClass = 0
 
 #GLOBAL STORAGE FOR ITEMS FOR EACH LITTLE GUY
 var littleGuyItems = {
-	1: [],
+	1: [1, 2],
 	2: [],
 	3: [],
 	4: [],

@@ -14,6 +14,7 @@ var enemies_spawned = 0
 
 func _ready():
 	player.initialize_class(playerClass.playerClass)
+	player.initialize_items(playerClass.littleGuyItems[playerClass.playerClass])
 	initialize_encounter(true)
 
 

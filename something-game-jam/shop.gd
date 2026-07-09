@@ -1,6 +1,5 @@
 extends Control
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -17,6 +16,7 @@ func _on_map_pressed():
 
 func _on_item_1_pressed():
 	print("I BOUGHT ITEM 1")
+	playerClass.littleGuyItems[1].append(1)
 
 
 func _on_item_2_pressed():

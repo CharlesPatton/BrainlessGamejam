@@ -58,7 +58,22 @@ func initialize_class(classType: int):
 	print(SHOOT_SPEED)
 	print(SPEED)
 	print("___")
+
+func initialize_items(items_list):
+	print(items_list)
+	for item in items_list:
+		if item == 1:
+			HEALTH += 7
 	
+	print("___")
+	print(HEALTH)
+	print(MELEE_DAMAGE)
+	print(RANGE_DAMAGE)
+	print(SWING_SPEED)
+	print(SHOOT_SPEED)
+	print(SPEED)
+	print("___")
+
 func move_player():
 	if Input.is_action_pressed("up"):
 		self.position.y -= 1 * SPEED
