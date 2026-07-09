@@ -11,6 +11,62 @@
 [sub_resource type="LabelSettings" id="LabelSettings_4sjfc"]
 font_size = 40
 
+[sub_resource type="LabelSettings" id="LabelSettings_5lntu"]
+font_size = 30
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xcxuq"]
+font_size = 30
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcxuq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_0h0hh"]
+Label/styles/normal = SubResource("StyleBoxFlat_xcxuq")
+
+[sub_resource type="Theme" id="Theme_5lntu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s4lus"]
+font_size = 25
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0h0hh"]
+font_size = 30
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lntu"]
+content_margin_left = 30.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id="Theme_s4lus"]
+Label/styles/normal = SubResource("StyleBoxFlat_5lntu")
+
+[sub_resource type="LabelSettings" id="LabelSettings_71h8b"]
+font_size = 25
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+
 [node name="selectClass" type="Control" unique_id=735312529]
 layout_mode = 3
 anchors_preset = 15
@@ -20,11 +76,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2rt7b")
 
-[node name="class1" type="Sprite2D" parent="." unique_id=1077999504]
+[node name="screen1" type="Control" parent="." unique_id=504855006]
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="class1" type="Sprite2D" parent="screen1" unique_id=1077999504]
 position = Vector2(200, 150)
 texture = ExtResource("2_ep2a8")
 
-[node name="Label" type="Label" parent="class1" unique_id=1430799164]
+[node name="Label" type="Label" parent="screen1/class1" unique_id=1430799164]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -39,18 +100,18 @@ label_settings = SubResource("LabelSettings_4sjfc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="class1" type="Button" parent="class1" unique_id=1962344075]
+[node name="class1" type="Button" parent="screen1/class1" unique_id=1962344075]
 modulate = Color(1, 1, 1, 0)
 offset_left = -71.0
 offset_top = -69.0
 offset_right = 72.0
 offset_bottom = 92.0
 
-[node name="class2" type="Sprite2D" parent="." unique_id=1437560801]
+[node name="class2" type="Sprite2D" parent="screen1" unique_id=1437560801]
 position = Vector2(562, 133)
 texture = ExtResource("3_hy404")
 
-[node name="Label" type="Label" parent="class2" unique_id=595226709]
+[node name="Label" type="Label" parent="screen1/class2" unique_id=595226709]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -65,18 +126,18 @@ label_settings = SubResource("LabelSettings_4sjfc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="class2" type="Button" parent="class2" unique_id=1597254174]
+[node name="class2" type="Button" parent="screen1/class2" unique_id=1597254174]
 modulate = Color(1, 1, 1, 0)
 offset_left = -74.0
 offset_top = -61.0
 offset_right = 77.0
 offset_bottom = 87.0
 
-[node name="class3" type="Sprite2D" parent="." unique_id=2125323699]
+[node name="class3" type="Sprite2D" parent="screen1" unique_id=2125323699]
 position = Vector2(908, 140)
 texture = ExtResource("4_fmjc1")
 
-[node name="Label" type="Label" parent="class3" unique_id=1882335363]
+[node name="Label" type="Label" parent="screen1/class3" unique_id=1882335363]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -91,18 +152,18 @@ label_settings = SubResource("LabelSettings_4sjfc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="class3" type="Button" parent="class3" unique_id=1563992659]
+[node name="class3" type="Button" parent="screen1/class3" unique_id=1563992659]
 modulate = Color(1, 1, 1, 0)
 offset_left = -66.0
 offset_top = -64.0
 offset_right = 88.0
 offset_bottom = 93.0
 
-[node name="class4" type="Sprite2D" parent="." unique_id=1678625062]
+[node name="class4" type="Sprite2D" parent="screen1" unique_id=1678625062]
 position = Vector2(200, 400)
 texture = ExtResource("5_cbvmh")
 
-[node name="Label" type="Label" parent="class4" unique_id=814523061]
+[node name="Label" type="Label" parent="screen1/class4" unique_id=814523061]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -117,18 +178,18 @@ label_settings = SubResource("LabelSettings_4sjfc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="class4" type="Button" parent="class4" unique_id=1075722040]
+[node name="class4" type="Button" parent="screen1/class4" unique_id=1075722040]
 modulate = Color(1, 1, 1, 0)
 offset_left = -78.0
 offset_top = -56.0
 offset_right = 72.0
 offset_bottom = 97.0
 
-[node name="class5" type="Sprite2D" parent="." unique_id=179815735]
+[node name="class5" type="Sprite2D" parent="screen1" unique_id=179815735]
 position = Vector2(550, 400)
 texture = ExtResource("6_5lntu")
 
-[node name="Label" type="Label" parent="class5" unique_id=1824328851]
+[node name="Label" type="Label" parent="screen1/class5" unique_id=1824328851]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -143,19 +204,19 @@ label_settings = SubResource("LabelSettings_4sjfc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="class5" type="Button" parent="class5" unique_id=314338429]
+[node name="class5" type="Button" parent="screen1/class5" unique_id=314338429]
 modulate = Color(1, 1, 1, 0)
 offset_left = -92.0
 offset_top = -71.0
 offset_right = 84.0
 offset_bottom = 103.0
 
-[node name="class6" type="Sprite2D" parent="." unique_id=1207048114]
+[node name="class6" type="Sprite2D" parent="screen1" unique_id=1207048114]
 position = Vector2(900, 400)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_4sjfc")
 
-[node name="Label" type="Label" parent="class6" unique_id=785928904]
+[node name="Label" type="Label" parent="screen1/class6" unique_id=785928904]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -168,16 +229,146 @@ label_settings = SubResource("LabelSettings_4sjfc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="class6" type="Button" parent="class6" unique_id=448347836]
+[node name="class6" type="Button" parent="screen1/class6" unique_id=448347836]
 modulate = Color(1, 1, 1, 0)
 offset_left = -346.66675
 offset_top = -450.0
 offset_right = 370.0
 offset_bottom = 499.99994
 
-[connection signal="pressed" from="class1/class1" to="." method="_on_class_1_pressed"]
-[connection signal="pressed" from="class2/class2" to="." method="_on_class_2_pressed"]
-[connection signal="pressed" from="class3/class3" to="." method="_on_class_3_pressed"]
-[connection signal="pressed" from="class4/class4" to="." method="_on_class_4_pressed"]
-[connection signal="pressed" from="class5/class5" to="." method="_on_class_5_pressed"]
-[connection signal="pressed" from="class6/class6" to="." method="_on_class_6_pressed"]
+[node name="screen2" type="Control" parent="." unique_id=1804758736]
+visible = false
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="chosen_guy_name" type="Label" parent="screen2" unique_id=398189063]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 130.0
+offset_right = 295.0
+offset_bottom = 183.0
+text = "Ninja Guy"
+label_settings = SubResource("LabelSettings_5lntu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="chosen_guy_sprite2" type="Sprite2D" parent="screen2" unique_id=1668372332]
+position = Vector2(199, 286)
+scale = Vector2(2, 2)
+texture = ExtResource("5_cbvmh")
+
+[node name="items" type="Label" parent="screen2" unique_id=842699038]
+layout_mode = 0
+offset_left = 425.0
+offset_top = 130.0
+offset_right = 507.0
+offset_bottom = 172.0
+text = "Items"
+label_settings = SubResource("LabelSettings_xcxuq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="screen2" unique_id=409653311]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_0h0hh")
+
+[node name="item1" type="Label" parent="screen2/Control" unique_id=1313910854]
+layout_mode = 0
+offset_left = 375.0
+offset_top = 190.0
+offset_right = 563.0
+offset_bottom = 225.0
+theme = SubResource("Theme_5lntu")
+text = "Item 1"
+label_settings = SubResource("LabelSettings_s4lus")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item2" type="Label" parent="screen2/Control" unique_id=1574226499]
+layout_mode = 0
+offset_left = 375.0
+offset_top = 240.0
+offset_right = 563.0
+offset_bottom = 275.0
+text = "Item 2"
+label_settings = SubResource("LabelSettings_s4lus")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item3" type="Label" parent="screen2/Control" unique_id=77922060]
+layout_mode = 0
+offset_left = 375.0
+offset_top = 290.0
+offset_right = 563.0
+offset_bottom = 325.0
+text = "Item 3"
+label_settings = SubResource("LabelSettings_s4lus")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item4" type="Label" parent="screen2/Control" unique_id=689474641]
+layout_mode = 0
+offset_left = 375.0
+offset_top = 340.0
+offset_right = 563.0
+offset_bottom = 375.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "Item 4"
+label_settings = SubResource("LabelSettings_s4lus")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="stats" type="Label" parent="screen2" unique_id=2133146947]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 100.0
+offset_right = 822.0
+offset_bottom = 142.0
+text = "Stats"
+label_settings = SubResource("LabelSettings_0h0hh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="individual_stats_label" type="Label" parent="screen2" unique_id=1246275428]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 150.0
+offset_right = 1013.0
+offset_bottom = 395.0
+theme = SubResource("Theme_s4lus")
+text = "Health:                                    20
+Speed:                                       5
+Melee Damage:                        4
+Range Damage:                        1
+Melee Speed:                         0.2
+Range Speed:                         0.1"
+label_settings = SubResource("LabelSettings_71h8b")
+
+[node name="back_to_screen_1" type="Button" parent="screen2" unique_id=1537924261]
+layout_mode = 0
+offset_left = 626.0
+offset_top = 500.0
+offset_right = 926.0
+offset_bottom = 575.0
+text = "Back to Selection"
+
+[node name="ready_button" type="Button" parent="screen2" unique_id=1203663269]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 500.0
+offset_right = 526.0
+offset_bottom = 575.0
+text = "READY"
+
+[connection signal="pressed" from="screen1/class1/class1" to="." method="_on_class_1_pressed"]
+[connection signal="pressed" from="screen1/class2/class2" to="." method="_on_class_2_pressed"]
+[connection signal="pressed" from="screen1/class3/class3" to="." method="_on_class_3_pressed"]
+[connection signal="pressed" from="screen1/class4/class4" to="." method="_on_class_4_pressed"]
+[connection signal="pressed" from="screen1/class5/class5" to="." method="_on_class_5_pressed"]
+[connection signal="pressed" from="screen1/class6/class6" to="." method="_on_class_6_pressed"]
+[connection signal="pressed" from="screen2/back_to_screen_1" to="." method="_on_back_to_screen_1_pressed"]
+[connection signal="pressed" from="screen2/ready_button" to="." method="_on_ready_button_pressed"]
