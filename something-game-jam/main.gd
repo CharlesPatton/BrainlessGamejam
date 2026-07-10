@@ -13,8 +13,6 @@ var num_enemies = 0
 var enemies_spawned = 0
 
 func _ready():
-	player.initialize_class(playerClass.playerClass)
-	player.initialize_items(playerClass.littleGuyItems[playerClass.playerClass])
 	initialize_encounter(true)
 
 
@@ -26,7 +24,7 @@ func _process(delta: float) -> void:
 	if enemies.get_child_count() == 0 and num_enemies * 2 == enemies_spawned:
 		print("ENEMIES GONE")
 		get_tree().change_scene_to_file("res://map.tscn")
-	elif player.HEALTH <= 0:
+	elif player.player_stats["Health"] <= 0:
 		print("DIED")
 		get_tree().change_scene_to_file("res://map.tscn")
 

@@ -13,9 +13,34 @@ func _process(delta):
 
 func switch_screens():
 	if screen1.visible:
+		playerClass.calc_stats_final()
+		var player_stats = playerClass.updated_stats
 		var player_items = playerClass.littleGuyItems[playerClass.playerClass]
 		var control = $screen2/Control
 		var index = 0
+		
+		var sprite = screen2.get_node("chosen_guy_sprite")
+		var label = screen2.get_node("chosen_guy_name")
+		
+		
+		if playerClass.playerClass == 1:
+			sprite.texture = load("res://sprites/little_guy_1.png")
+			label.text = "Knight Guy"
+		elif playerClass.playerClass == 2:
+			sprite.texture = load("res://sprites/little_guy_2.png")
+			label.text = "Ninja Guy"
+		elif playerClass.playerClass == 3:
+			sprite.texture = load("res://sprites/little_guy_3.png")
+			label.text = "Archer Guy"
+		elif playerClass.playerClass == 4:
+			sprite.texture = load("res://sprites/little_guy_4.png")
+			label.text = "Thief Guy"
+		elif playerClass.playerClass == 5:
+			sprite.texture = load("res://sprites/little_guy_5.png")
+			label.text = "King Guy"
+		elif playerClass.playerClass == 6:
+			sprite.texture = load("res://sprites/little_guy_1.png")
+			label.text = "Template Guy"
 		
 		for node in control.get_children():
 			if index == 4:
@@ -27,6 +52,13 @@ func switch_screens():
 				node.text = "MISSING ITEM"
 			
 			index += 1
+		
+		screen2.get_node("individual_stats_label").text = "Health:                                    %s
+Melee Damage:                        %s
+Range Damage:                        %s
+Speed:                                       %s
+Melee Speed:                         %s
+Range Speed:                         %s" % [str(player_stats["Health"]), str(player_stats["MeleeDamage"]), str(player_stats["RangeDamage"]), str(player_stats["Speed"]), str(player_stats["MeleeSpeed"]), str(player_stats["RangeSpeed"])]
 	
 	screen1.visible = not screen1.visible
 	screen2.visible = not screen2.visible

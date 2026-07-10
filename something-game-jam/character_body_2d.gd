@@ -5,87 +5,25 @@ extends CharacterBody2D
 var canShoot = true
 var canSwing = true
 
-#PLAYER THINGS
-var HEALTH = 20
-var MELEE_DAMAGE = 4
-var RANGE_DAMAGE = 1
-var SWING_SPEED = 0.2
-var SHOOT_SPEED = 0.25
-var SPEED = 3
+var player_stats = playerClass.updated_stats
 
 func _process(delta: float) -> void:
 	move_player()
 	shoot(delta)
 
-func initialize_class(classType: int):
-	if classType == 1: #strong melee
-		HEALTH *= 2
-		MELEE_DAMAGE *= 2 
-		SPEED /= 2
-	elif classType == 2:  #fast melee
-		HEALTH /= 2
-		SPEED *= 2
-		SWING_SPEED /= 2
-	elif classType == 3: # strong ranged
-		HEALTH *= 2
-		SPEED /= 2
-		RANGE_DAMAGE *= 2
-	elif classType == 4: #fast ranged
-		SPEED *= 2
-		HEALTH /= 2
-		SHOOT_SPEED /= 2
-	elif classType == 5: #all around fast
-		SWING_SPEED /= 2
-		SHOOT_SPEED /= 2
-		HEALTH /= 2
-		SPEED /= 2
-	elif classType == 6:
-		HEALTH *= 2
-		SPEED *= 2
-		SWING_SPEED *= 2
-		SHOOT_SPEED *= 2
-	
-	if classType < 1 or classType > 6:
-		print("Class is Unknown")
-	else:
-		print("I am class " + str(classType))
-	
-	print("___")
-	print(HEALTH)
-	print(MELEE_DAMAGE)
-	print(RANGE_DAMAGE)
-	print(SWING_SPEED)
-	print(SHOOT_SPEED)
-	print(SPEED)
-	print("___")
-
-func initialize_items(items_list):
-	print(items_list)
-	for item in items_list:
-		if item == 1:
-			HEALTH += 7
-	
-	print("___")
-	print(HEALTH)
-	print(MELEE_DAMAGE)
-	print(RANGE_DAMAGE)
-	print(SWING_SPEED)
-	print(SHOOT_SPEED)
-	print(SPEED)
-	print("___")
 
 func move_player():
 	if Input.is_action_pressed("up"):
-		self.position.y -= 1 * SPEED
+		self.position.y -= 1 * player_stats["Speed"]
 		
 	if Input.is_action_pressed("down"):
-		self.position.y += 1 * SPEED
+		self.position.y += 1 * player_stats["Speed"]
 		
 	if Input.is_action_pressed("left"):
-		self.position.x -= 1 * SPEED
+		self.position.x -= 1 * player_stats["Speed"]
 		
 	if Input.is_action_pressed("right"):
-		self.position.x += 1 * SPEED
+		self.position.x += 1 * player_stats["Speed"]
 
 
 func shoot(delta):
@@ -100,7 +38,7 @@ func shoot(delta):
 		copyb.visible = true
 		copyb.get_node("Timer").start() #Will start timer to remove bullet from scene after 1 seconds
 		
-		$ShootCoolDown.start(SHOOT_SPEED)
+		$ShootCoolDown.start(player_stats["RangeSpeed"])
 	
 	if Input.is_action_just_pressed("swing") and canSwing:
 		canSwing = false
@@ -114,13 +52,11 @@ func shoot(delta):
 		
 		#rotates to starting angle and then tweens by SWING_SPEED to final angle
 		weapon.rotate(-PI/3)
-		#print(weapon.rotation * 180/PI)
 		
 		var tween = get_tree().create_tween()
-		tween.tween_property(weapon, "rotation", weapon.rotation + (2 * PI/3), SWING_SPEED)
+		tween.tween_property(weapon, "rotation", weapon.rotation + (2 * PI/3), 0.2)
 		
-		await get_tree().create_timer(SWING_SPEED).timeout
-		#print(weapon.rotation * 180/PI)
+		await get_tree().create_timer(player_stats["MeleeSpeed"]).timeout
 		endSwing()
 
 
@@ -144,16 +80,16 @@ func _on_player_hit_box_area_entered(area):
 	if area.get_node("enemyBulletCollision"):
 		pass
 		#print("hit")
-		#HEALTH -= 1	
+		#player_stats["Health"] -= 1	
 
 
 func _on_weapon_body_entered(body):
 	if body.get_parent().name == "enemies":
 		#print("HIT ENEMY MELEE")
-		body.health -= MELEE_DAMAGE
+		body.health -= player_stats["MeleeDamage"]
 
 
 func _on_bullet_body_entered(body):
 	if body.get_parent().name == "enemies":
 		#print("HIT ENEMY RANGED")
-		body.health -= MELEE_DAMAGE
+		body.health -= player_stats["RangeDamage"]
