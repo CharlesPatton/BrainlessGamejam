@@ -75,7 +75,7 @@ func shoot(delta):
 		copyb.visible = true
 		copyb.get_node("Timer").start() #Will start timer to remove bullet from scene after 1 seconds
 		
-		$ShootCoolDown.start(.15)
+		$ShootCoolDown.start(.5)
 
 
 func _on_shoot_cool_down_timeout() -> void:

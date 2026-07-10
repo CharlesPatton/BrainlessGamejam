@@ -95,8 +95,11 @@ func _on_class_6_pressed():
 
 
 func _on_ready_button_pressed():
-	var stats = screen2.get_node("individual_stats_label")
-	get_tree().change_scene_to_file("res://node_2d.tscn")
+	if not playerClass.game_paused:
+		get_tree().change_scene_to_file("res://node_2d.tscn")
+	else:
+		switch_screens()
+		get_parent().pause_game()
 
 
 func _on_back_to_screen_1_pressed():

@@ -6,7 +6,6 @@ extends Node2D
 @onready var selectClass = $selectClass
 
 var char_select = preload("res://select_class.tscn")
-var paused = true
 
 var random = RandomNumberGenerator.new()
 var num_enemies = 0
@@ -17,9 +16,9 @@ func _ready():
 
 
 func _process(delta: float) -> void:
-	#if Input.is_action_pressed("change_class"):
-		#selectClass.visible = not selectClass.visible
-		#paused = not paused
+	if Input.is_action_pressed("pause"):
+		pause_game()
+		
 	
 	if enemies.get_child_count() == 0 and num_enemies * 2 == enemies_spawned:
 		print("ENEMIES GONE")
@@ -27,6 +26,15 @@ func _process(delta: float) -> void:
 	elif player.player_stats["Health"] <= 0:
 		print("DIED")
 		get_tree().change_scene_to_file("res://map.tscn")
+
+func pause_game():
+	print("Change Character")
+	get_tree().paused = not get_tree().paused
+	playerClass.game_paused = not playerClass.game_paused
+	selectClass.visible = not selectClass.visible
+	player.visible = not player.visible
+	enemies.visible = not enemies.visible
+	player.player_stats = playerClass.updated_stats
 
 
 func initialize_encounter(normal_fight: bool):
@@ -37,10 +45,10 @@ func initialize_encounter(normal_fight: bool):
 	else:
 		start_boss_fight()
 	
-	for i in range(num_enemies):
-		await get_tree().create_timer(4).timeout
-		add_enemy()
-		add_enemy()
+	#for i in range(num_enemies):
+		#await get_tree().create_timer(4).timeout
+		#add_enemy()
+		#add_enemy()
 
 
 func add_enemy():
@@ -53,3 +61,9 @@ func add_enemy():
 
 func start_boss_fight():
 	pass
+
+
+func _on_enemy_timer_timeout():
+	if enemies_spawned < num_enemies * 2:
+		add_enemy()
+		add_enemy()

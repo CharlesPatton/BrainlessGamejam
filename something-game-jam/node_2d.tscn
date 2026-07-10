@@ -38,6 +38,7 @@ size = Vector2(37, 33)
 script = ExtResource("1_d21ai")
 
 [node name="selectClass" parent="." unique_id=735312529 instance=ExtResource("2_4d7sh")]
+process_mode = 3
 visible = false
 
 [node name="player" type="CharacterBody2D" parent="." unique_id=1203201962]
@@ -187,6 +188,10 @@ label_settings = SubResource("LabelSettings_rj586")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="enemyTimer" type="Timer" parent="." unique_id=1062918523]
+wait_time = 4.0
+autostart = true
+
 [connection signal="body_entered" from="player/bullet" to="player" method="_on_bullet_body_entered"]
 [connection signal="timeout" from="player/bullet/Timer" to="player/bullet" method="_on_timer_timeout"]
 [connection signal="timeout" from="player/ShootCoolDown" to="player" method="_on_shoot_cool_down_timeout"]
@@ -195,3 +200,4 @@ vertical_alignment = 1
 [connection signal="area_entered" from="player/playerHitBox" to="player" method="_on_player_hit_box_area_entered"]
 [connection signal="timeout" from="enemies/enemy/bullet/Timer" to="enemies/enemy/bullet" method="_on_timer_timeout"]
 [connection signal="timeout" from="enemies/enemy/ShootCoolDown" to="enemies/enemy" method="_on_shoot_cool_down_timeout"]
+[connection signal="timeout" from="enemyTimer" to="." method="_on_enemy_timer_timeout"]

@@ -1,5 +1,6 @@
 extends Node
 
+#Base Stats that get manipulated later
 var base_stats = {
 	"Health": 20,
 	"MeleeDamage": 4,
@@ -9,6 +10,7 @@ var base_stats = {
 	"RangeSpeed": 0.2,
 }
 
+#The updated stats that gets used in game
 var updated_stats = {}
 
 #THE CLASS THE PLAYER CHOOSES TO PLAY AS DURING ENCOUNTER
@@ -23,6 +25,8 @@ var littleGuyItems = {
 	5: [9, 0],
 	6: [11, 12]
 }
+
+var game_paused = false
 
 func calc_class():
 	if playerClass == 1: #strong melee
@@ -69,9 +73,9 @@ func calc_items():
 		elif item == 4:
 			updated_stats["Speed"] += 0.5
 		elif item == 5:
-			updated_stats["MeleeSpeed"] += 1
+			updated_stats["MeleeSpeed"] -= 0.05
 		elif item == 6:
-			updated_stats["RangeSpeed"] += 1
+			updated_stats["RangeSpeed"] -= 0.1
 
 	print(updated_stats)
 

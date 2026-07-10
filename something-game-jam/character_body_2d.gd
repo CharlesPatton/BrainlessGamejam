@@ -54,7 +54,7 @@ func shoot(delta):
 		weapon.rotate(-PI/3)
 		
 		var tween = get_tree().create_tween()
-		tween.tween_property(weapon, "rotation", weapon.rotation + (2 * PI/3), 0.2)
+		tween.tween_property(weapon, "rotation", weapon.rotation + (2 * PI/3), player_stats["MeleeSpeed"])
 		
 		await get_tree().create_timer(player_stats["MeleeSpeed"]).timeout
 		endSwing()
@@ -87,9 +87,11 @@ func _on_weapon_body_entered(body):
 	if body.get_parent().name == "enemies":
 		#print("HIT ENEMY MELEE")
 		body.health -= player_stats["MeleeDamage"]
+		print(player_stats["MeleeDamage"])
 
 
 func _on_bullet_body_entered(body):
 	if body.get_parent().name == "enemies":
 		#print("HIT ENEMY RANGED")
 		body.health -= player_stats["RangeDamage"]
+		print(player_stats["RangeDamage"])
