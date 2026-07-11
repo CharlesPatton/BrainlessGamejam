@@ -28,15 +28,21 @@ func move_player():
 
 func shoot(delta):
 	if Input.is_action_pressed("shoot") and canShoot:
+		print("SHOOTING")
 		canShoot = false
 		var copyb = bullet.duplicate()
+		$player_bullets.add_child(copyb)
 		copyb.show()
-		copyb.position = self.position
+		copyb.global_position = global_position
 		var direction = (get_global_mouse_position() - global_position).normalized()
 		copyb.direction = direction
-		get_tree().current_scene.add_child(copyb)
+		
+		print(global_position)
+		print(copyb.global_position)
+		
 		copyb.visible = true
 		copyb.get_node("Timer").start() #Will start timer to remove bullet from scene after 1 seconds
+		
 		
 		$ShootCoolDown.start(player_stats["RangeSpeed"])
 	

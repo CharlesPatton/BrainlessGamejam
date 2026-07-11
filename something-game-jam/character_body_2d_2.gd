@@ -66,12 +66,13 @@ func shoot(delta):
 	if canShoot:
 		canShoot = false
 		var copyb = bullet.duplicate()
+		$enemy_bullets.add_child(copyb)
 		copyb.name = "bullet"
 		var direction = (get_parent().get_parent().get_node("player").global_position - global_position).normalized()
-		copyb.position = self.position
+		copyb.global_position = global_position
 		copyb.direction = direction
 		await get_tree().create_timer(.2).timeout
-		get_tree().current_scene.add_child(copyb)
+		
 		copyb.visible = true
 		copyb.get_node("Timer").start() #Will start timer to remove bullet from scene after 1 seconds
 		

@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 var health = 7
 var bomb_placed = false
+var bomb_location = null
 
 @export var movement_speed = 200
 
@@ -54,7 +55,8 @@ func _physics_process(delta: float) -> void:
 	
 	if bomb_placed:
 		#move around while bomb is in place
-		pass
+		bomb.global_position = bomb_location
+		explosion.global_position = bomb_location
 	
 	move_and_slide()
 
@@ -63,6 +65,8 @@ func _on_bomb_timer_timeout():
 	print("Starting Explosion")
 	bomb.show()
 	bomb.get_node("bomb_collision").disabled = false
+	bomb_placed = true
+	bomb_location = bomb.global_position
 	
 	await get_tree().create_timer(3).timeout
 	
@@ -93,5 +97,10 @@ func end_explosion():
 	print("Ending Explosion")
 	explosion.hide()
 	explosion.get_node("explosion_collision").disabled = true
+	
+	bomb_placed = false
+	
+	bomb.global_position = global_position
+	explosion.global_position = global_position
 	
 	$bombTimer.start()

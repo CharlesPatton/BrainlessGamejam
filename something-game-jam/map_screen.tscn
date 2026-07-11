@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://caj74gsoqtdk3"]
 
 [ext_resource type="Script" uid="uid://bq667rym6ggdk" path="res://map_screen.gd" id="1_wcttb"]
-[ext_resource type="Script" uid="uid://pa720c2mm72o" path="res://level.gd" id="2_wcttb"]
 [ext_resource type="Texture2D" uid="uid://dogbvcstiab3c" path="res://sprites/1811794.png" id="3_vmmbu"]
 
 [node name="MapScreen" type="Node2D" unique_id=406772114]
@@ -9,7 +8,6 @@ script = ExtResource("1_wcttb")
 
 [node name="level1" type="Node2D" parent="." unique_id=463953013]
 position = Vector2(170, 333)
-script = ExtResource("2_wcttb")
 
 [node name="Button" type="Button" parent="level1" unique_id=328679918]
 offset_left = -20.0
@@ -25,7 +23,6 @@ texture = ExtResource("3_vmmbu")
 
 [node name="level2" type="Node2D" parent="." unique_id=750679688]
 position = Vector2(354, 338)
-script = ExtResource("2_wcttb")
 
 [node name="Button" type="Button" parent="level2" unique_id=1327977260]
 offset_left = -20.0
@@ -41,7 +38,6 @@ texture = ExtResource("3_vmmbu")
 
 [node name="level3" type="Node2D" parent="." unique_id=1408389181]
 position = Vector2(524, 340)
-script = ExtResource("2_wcttb")
 
 [node name="Button" type="Button" parent="level3" unique_id=165219303]
 offset_left = -20.0
@@ -57,7 +53,6 @@ texture = ExtResource("3_vmmbu")
 
 [node name="level4" type="Node2D" parent="." unique_id=1479707048]
 position = Vector2(674, 345)
-script = ExtResource("2_wcttb")
 
 [node name="Button" type="Button" parent="level4" unique_id=1217124672]
 offset_left = -24.0
@@ -73,7 +68,6 @@ texture = ExtResource("3_vmmbu")
 
 [node name="level5" type="Node2D" parent="." unique_id=1002850789]
 position = Vector2(943, 326)
-script = ExtResource("2_wcttb")
 
 [node name="Node2D" type="Node2D" parent="level5" unique_id=479896775]
 position = Vector2(4, 8)

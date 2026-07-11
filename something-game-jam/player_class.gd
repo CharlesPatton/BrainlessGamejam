@@ -28,6 +28,13 @@ var littleGuyItems = {
 
 var game_paused = false
 
+
+var num_enemies
+var numberOfRounds
+var map
+
+
+
 func calc_class():
 	if playerClass == 1: #strong melee
 		updated_stats["Health"] *= 2

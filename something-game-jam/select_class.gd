@@ -96,7 +96,7 @@ func _on_class_6_pressed():
 
 func _on_ready_button_pressed():
 	if not playerClass.game_paused:
-		get_tree().change_scene_to_file("res://node_2d.tscn")
+		get_tree().change_scene_to_file("res://map_screen.tscn")
 	else:
 		switch_screens()
 		get_parent().pause_game()

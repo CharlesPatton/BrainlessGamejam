@@ -8,10 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://phingl88oxev" path="res://sprites/sword_temp.png" id="6_dv36v"]
 [ext_resource type="Script" uid="uid://djybwwl87ida4" path="res://character_body_2d_2.gd" id="7_yatc5"]
 [ext_resource type="Texture2D" uid="uid://djvqjk5takxg0" path="res://sprites/OIP.webp" id="8_t7q52"]
+[ext_resource type="Script" uid="uid://dh0sfuuh3ly6a" path="res://melee_enemy.gd" id="9_3cpy2"]
+[ext_resource type="Texture2D" uid="uid://bjgho04we3flh" path="res://sprites/little_guy_1.png" id="10_yr6ug"]
+[ext_resource type="Script" uid="uid://bfkhq07ukxgc4" path="res://bomb_enemy.gd" id="11_yatc5"]
+[ext_resource type="Texture2D" uid="uid://cxbtoxclpsih4" path="res://sprites/little_guy_2.png" id="12_t7q52"]
+[ext_resource type="Texture2D" uid="uid://dfrap1h7sq68c" path="res://sprites/bomb.png" id="13_1ftpa"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1ftpa"]
-vertices = PackedVector2Array(715, 149.5, 715, 90.5, 1150, -14.1015625, 1150, 659.03906, -12.7578125, -26.882813, 295, 90.5, 2.7734375, 663.9531, 295, 149.5)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 2, 1, 5), PackedInt32Array(6, 4, 5, 7), PackedInt32Array(3, 6, 7, 0)])
+vertices = PackedVector2Array(1156.8984, 664, 2.78125, 664, 237.5, 485.75, 715, 149.5, 1150.0938, -14.1015625, 182.5, 485.75, -12.7578125, -26.882813, 182.5, 256.25, 715, 90.5, 295, 90.5, 295, 149.5, 237.5, 256.25)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 2, 1), PackedInt32Array(5, 1, 6, 7), PackedInt32Array(4, 3, 8), PackedInt32Array(6, 4, 8, 9), PackedInt32Array(7, 6, 9, 10, 11), PackedInt32Array(10, 3, 2, 11)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-23, -37, -7, 674, 1160, 669, 1160, -24)])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jsiwy"]
@@ -31,12 +36,31 @@ size = Vector2(70.875, 9)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dv36v"]
 size = Vector2(53, 57)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aesmr"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7q52"]
 size = Vector2(37, 33)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdss8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ftpa"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_gkayo"]
+[sub_resource type="LabelSettings" id="LabelSettings_kjqm1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjqm1"]
+size = Vector2(59, 85)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mglip"]
+size = Vector2(69.5, 12)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7lq57"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7lq57"]
+size = Vector2(65, 72)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_etgx1"]
+radius = 19.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2v8ms"]
+radius = 90.005554
+
+[sub_resource type="LabelSettings" id="LabelSettings_aesmr"]
 
 [node name="level1" type="Node2D" unique_id=1615763410]
 script = ExtResource("1_jog3e")
@@ -114,59 +138,155 @@ collision_mask = 4
 position = Vector2(-0.5, -7.5)
 shape = SubResource("RectangleShape2D_dv36v")
 
+[node name="player_bullets" type="Node2D" parent="player" unique_id=1353814018]
+
 [node name="enemies" type="Node2D" parent="." unique_id=1871215870]
 
-[node name="enemy" type="CharacterBody2D" parent="enemies" unique_id=414095095]
+[node name="enemy" type="CharacterBody2D" parent="enemies" unique_id=2020965449]
 position = Vector2(519, 90)
 script = ExtResource("7_yatc5")
 npc_state = 1
 
-[node name="hitShape" type="Area2D" parent="enemies/enemy" unique_id=1998123485]
+[node name="hitShape" type="Area2D" parent="enemies/enemy" unique_id=953426940]
 collision_mask = 2
 
-[node name="hitDetectionShape" type="CollisionShape2D" parent="enemies/enemy/hitShape" unique_id=982959324]
+[node name="hitDetectionShape" type="CollisionShape2D" parent="enemies/enemy/hitShape" unique_id=1656856316]
 position = Vector2(1, -2.5)
-shape = SubResource("RectangleShape2D_aesmr")
+shape = SubResource("RectangleShape2D_t7q52")
 
-[node name="shape" type="CollisionShape2D" parent="enemies/enemy" unique_id=124764631]
+[node name="shape" type="CollisionShape2D" parent="enemies/enemy" unique_id=1270282851]
 position = Vector2(1, -2.5)
-shape = SubResource("RectangleShape2D_aesmr")
+shape = SubResource("RectangleShape2D_t7q52")
 
-[node name="Sprite2D" type="Sprite2D" parent="enemies/enemy" unique_id=1500822766]
+[node name="Sprite2D" type="Sprite2D" parent="enemies/enemy" unique_id=1202210341]
 position = Vector2(3.5, -3)
 scale = Vector2(0.07383971, 0.08)
 texture = ExtResource("8_t7q52")
 
-[node name="bullet" type="Area2D" parent="enemies/enemy" unique_id=2024357002]
+[node name="bullet" type="Area2D" parent="enemies/enemy" unique_id=904128952]
 position = Vector2(-1, -5)
 collision_layer = 4
 script = ExtResource("4_3cpy2")
 
-[node name="enemyBulletCollision" type="CollisionShape2D" parent="enemies/enemy/bullet" unique_id=272346652]
-shape = SubResource("RectangleShape2D_xdss8")
+[node name="enemyBulletCollision" type="CollisionShape2D" parent="enemies/enemy/bullet" unique_id=255400137]
+shape = SubResource("RectangleShape2D_1ftpa")
 
-[node name="Sprite2D" type="Sprite2D" parent="enemies/enemy/bullet" unique_id=433669303]
+[node name="Sprite2D" type="Sprite2D" parent="enemies/enemy/bullet" unique_id=128566669]
 position = Vector2(-9.536743e-07, 1.000001)
 scale = Vector2(0.11718753, 0.12109376)
 texture = ExtResource("5_yr6ug")
 
-[node name="Timer" type="Timer" parent="enemies/enemy/bullet" unique_id=611973728]
+[node name="Timer" type="Timer" parent="enemies/enemy/bullet" unique_id=514979676]
 
-[node name="ShootCoolDown" type="Timer" parent="enemies/enemy" unique_id=303652816]
+[node name="ShootCoolDown" type="Timer" parent="enemies/enemy" unique_id=1851149630]
 autostart = true
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="enemies/enemy" unique_id=44447826]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="enemies/enemy" unique_id=652329160]
 debug_enabled = true
 
-[node name="hitpoints" type="Label" parent="enemies/enemy" unique_id=1800267014]
+[node name="hitpoints" type="Label" parent="enemies/enemy" unique_id=1551179560]
 offset_left = -17.0
 offset_top = -39.0
 offset_right = 23.0
 offset_bottom = -16.0
 text = "10"
-label_settings = SubResource("LabelSettings_gkayo")
+label_settings = SubResource("LabelSettings_kjqm1")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="enemy_bullets" type="Node2D" parent="enemies/enemy" unique_id=519266688]
+
+[node name="melee_enemy" type="CharacterBody2D" parent="enemies" unique_id=1212818669]
+position = Vector2(755, 135)
+script = ExtResource("9_3cpy2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/melee_enemy" unique_id=260513760]
+position = Vector2(-5.5, -5.5)
+shape = SubResource("RectangleShape2D_kjqm1")
+
+[node name="Sprite2D" type="Sprite2D" parent="enemies/melee_enemy" unique_id=884129435]
+texture = ExtResource("10_yr6ug")
+
+[node name="enemy_weapon" type="Area2D" parent="enemies/melee_enemy" unique_id=448346870]
+visible = false
+collision_layer = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="enemies/melee_enemy/enemy_weapon" unique_id=1718359039]
+position = Vector2(17, 1.0000011)
+rotation = 1.5707964
+scale = Vector2(1, 1.4944971)
+texture = ExtResource("6_dv36v")
+
+[node name="enemy_weapon_collision" type="CollisionShape2D" parent="enemies/melee_enemy/enemy_weapon" unique_id=1962697776]
+position = Vector2(48.25, -2)
+shape = SubResource("RectangleShape2D_mglip")
+disabled = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="enemies/melee_enemy" unique_id=1004747833]
+debug_enabled = true
+
+[node name="swingCooldown" type="Timer" parent="enemies/melee_enemy" unique_id=717568382]
+autostart = true
+
+[node name="hitpoints" type="Label" parent="enemies/melee_enemy" unique_id=1359629955]
+offset_left = -25.0
+offset_top = -74.0
+offset_right = 15.0
+offset_bottom = -51.0
+text = "15"
+label_settings = SubResource("LabelSettings_7lq57")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bomb_enemy" type="CharacterBody2D" parent="enemies" unique_id=310922440]
+position = Vector2(350, 232)
+script = ExtResource("11_yatc5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/bomb_enemy" unique_id=250665725]
+position = Vector2(-5.5, -6)
+shape = SubResource("RectangleShape2D_7lq57")
+
+[node name="Sprite2D" type="Sprite2D" parent="enemies/bomb_enemy" unique_id=814712346]
+texture = ExtResource("12_t7q52")
+
+[node name="bomb" type="Area2D" parent="enemies/bomb_enemy" unique_id=1896025529]
+visible = false
+light_mask = 4
+
+[node name="bomb_collision" type="CollisionShape2D" parent="enemies/bomb_enemy/bomb" unique_id=2071428782]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_etgx1")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="enemies/bomb_enemy/bomb" unique_id=51051742]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("13_1ftpa")
+
+[node name="explosion" type="Area2D" parent="enemies/bomb_enemy" unique_id=1428258372]
+visible = false
+light_mask = 4
+
+[node name="explosion_collision" type="CollisionShape2D" parent="enemies/bomb_enemy/explosion" unique_id=112584120]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_2v8ms")
+disabled = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="enemies/bomb_enemy" unique_id=112039671]
+debug_enabled = true
+
+[node name="hitpoints" type="Label" parent="enemies/bomb_enemy" unique_id=1977546212]
+offset_left = -22.0
+offset_top = -63.0
+offset_right = 18.0
+offset_bottom = -40.0
+text = "7"
+label_settings = SubResource("LabelSettings_aesmr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bombTimer" type="Timer" parent="enemies/bomb_enemy" unique_id=423837108]
+wait_time = 3.0
+autostart = true
 
 [connection signal="body_entered" from="player/bullet" to="player" method="_on_bullet_body_entered"]
 [connection signal="timeout" from="player/bullet/Timer" to="player/bullet" method="_on_timer_timeout"]
@@ -176,3 +296,5 @@ vertical_alignment = 1
 [connection signal="area_entered" from="player/playerHitBox" to="player" method="_on_player_hit_box_area_entered"]
 [connection signal="timeout" from="enemies/enemy/bullet/Timer" to="enemies/enemy/bullet" method="_on_timer_timeout"]
 [connection signal="timeout" from="enemies/enemy/ShootCoolDown" to="enemies/enemy" method="_on_shoot_cool_down_timeout"]
+[connection signal="timeout" from="enemies/melee_enemy/swingCooldown" to="enemies/melee_enemy" method="_on_swing_cooldown_timeout"]
+[connection signal="timeout" from="enemies/bomb_enemy/bombTimer" to="enemies/bomb_enemy" method="_on_bomb_timer_timeout"]
