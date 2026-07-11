@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ffcxoy15kfli"
-path="res://.godot/imported/littlE_guy_5.png-4341e0ae85b3915957f7cd9eb67efa82.ctex"
+path="res://.godot/imported/little_guy_5.png-214e659caac29dba6fbbd105d772099c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/littlE_guy_5.png"
-dest_files=["res://.godot/imported/littlE_guy_5.png-4341e0ae85b3915957f7cd9eb67efa82.ctex"]
+source_file="res://sprites/little_guy_5.png"
+dest_files=["res://.godot/imported/little_guy_5.png-214e659caac29dba6fbbd105d772099c.ctex"]
 
 [params]
 

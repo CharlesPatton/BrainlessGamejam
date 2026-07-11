@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://c2qcg100ui84c"]
+
+[ext_resource type="Script" uid="uid://djybwwl87ida4" path="res://character_body_2d_2.gd" id="1_b6d6m"]
+[ext_resource type="Texture2D" uid="uid://djvqjk5takxg0" path="res://sprites/OIP.webp" id="1_kexd4"]
+[ext_resource type="Script" uid="uid://cfxdia83t8i0j" path="res://bullet.gd" id="2_mxs0p"]
+[ext_resource type="Texture2D" uid="uid://co5okifted1dd" path="res://sprites/icon.svg" id="3_b6d6m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2apv"]
+size = Vector2(37, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kexd4"]
+size = Vector2(37, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jn5k4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mxs0p"]
+
+[node name="ranged_enemy" type="CharacterBody2D" unique_id=771895970]
+script = ExtResource("1_b6d6m")
+
+[node name="hitShape" type="Area2D" parent="." unique_id=907989521]
+collision_mask = 2
+
+[node name="hitDetectionShape" type="CollisionShape2D" parent="hitShape" unique_id=1433832348]
+position = Vector2(1, -2.5)
+shape = SubResource("RectangleShape2D_x2apv")
+
+[node name="shape" type="CollisionShape2D" parent="." unique_id=1123514518]
+position = Vector2(1, -2.5)
+shape = SubResource("RectangleShape2D_kexd4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2097034474]
+position = Vector2(3.5, -3)
+scale = Vector2(0.07383971, 0.08)
+texture = ExtResource("1_kexd4")
+
+[node name="bullet" type="Area2D" parent="." unique_id=1109980987]
+visible = false
+position = Vector2(-1, -5)
+collision_layer = 4
+script = ExtResource("2_mxs0p")
+
+[node name="enemyBulletCollision" type="CollisionShape2D" parent="bullet" unique_id=2144357667]
+shape = SubResource("RectangleShape2D_jn5k4")
+
+[node name="Sprite2D" type="Sprite2D" parent="bullet" unique_id=1385219797]
+position = Vector2(-9.536743e-07, 1.000001)
+scale = Vector2(0.11718753, 0.12109376)
+texture = ExtResource("3_b6d6m")
+
+[node name="Timer" type="Timer" parent="bullet" unique_id=1211709068]
+
+[node name="ShootCoolDown" type="Timer" parent="." unique_id=403129574]
+autostart = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1403634979]
+debug_enabled = true
+
+[node name="hitpoints" type="Label" parent="." unique_id=1066158020]
+offset_left = -17.0
+offset_top = -39.0
+offset_right = 23.0
+offset_bottom = -16.0
+text = "10"
+label_settings = SubResource("LabelSettings_mxs0p")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="enemy_bullets" type="Node2D" parent="." unique_id=916485018]
+
+[connection signal="timeout" from="bullet/Timer" to="bullet" method="_on_timer_timeout"]
+[connection signal="timeout" from="ShootCoolDown" to="." method="_on_shoot_cool_down_timeout"]

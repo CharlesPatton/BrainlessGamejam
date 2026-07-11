@@ -8,25 +8,20 @@ var isBossRoom = false
 
 
 @onready var enemies = $enemies
-@onready var melee_enemy = $enemies/melee_enemy.duplicate()
-@onready var ranged_enemy = $enemies/enemy.duplicate()
-@onready var bomb_enemy = $enemies/bomb_enemy.duplicate()
+@onready var melee_enemy = preload("res://melee_enemy.tscn")
+@onready var ranged_enemy = preload("res://ranged_enemy.tscn")
+@onready var bomb_enemy = preload("res://bomb_enemy.tscn")
 @onready var player = $player
 @onready var selectClass = $selectClass
-
-var char_select = preload("res://select_class.tscn")
 
 var random = RandomNumberGenerator.new()
 
 var enemies_spawned = 0
-var curr_round = 1
+var curr_round = 0
 
 func _ready():
-	
-	$enemies/enemy.queue_free()
-	$enemies/melee_enemy.queue_free()
-	$enemies/bomb_enemy.queue_free()
 	initialize_round()
+	print()
 
 
 func _process(delta: float) -> void:
@@ -37,7 +32,9 @@ func _process(delta: float) -> void:
 		print("ENEMIES GONE")
 		if curr_round == numberOfRounds:
 			get_tree().change_scene_to_file("res://map.tscn")
-		curr_round += 1
+		print("NEW ROUND")
+		enemies_spawned = 0
+		initialize_round()
 		
 	elif player.player_stats["Health"] <= 0:
 		print("DIED")
@@ -54,27 +51,29 @@ func pause_game():
 
 
 func initialize_round():
+	curr_round += 1
 	for i in range(num_enemies):
-		var enemy_type = random.randi_range(1, 3)
+		var enemy_type = i + 1 #random.randi_range(1, 3)
+		print("------")
+		print("SPAWNING ENEMY")
+		print(enemy_type)
+		print("------")
+		
 		if enemy_type % 3 == 0:
-			enemies.add_child(melee_enemy)
-			melee_enemy.show()
-			melee_enemy.health = 10
-			melee_enemy.name = "melee_enemy"
-			melee_enemy = $enemies.get_node("melee_enemy")
+			var new_enemy = melee_enemy.instantiate()
+			enemies.add_child(new_enemy)
+			new_enemy.show()
+			new_enemy.health = 15
 			enemies_spawned += 1
 		elif enemy_type % 3 == 1:
-			enemies.add_child(ranged_enemy)
-			ranged_enemy.show()
-			ranged_enemy.health = 10
-			ranged_enemy.name = "ranged_enemy"
-			ranged_enemy = $enemies.get_node("ranged_enemy")
+			var new_enemy = ranged_enemy.instantiate()
+			enemies.add_child(new_enemy)
+			new_enemy.show()
+			new_enemy.health = 10
 			enemies_spawned += 1
-		else:
-			enemies.add_child(bomb_enemy)
-			bomb_enemy.show()
-			bomb_enemy.health = 10
-			bomb_enemy.name = "bomb_enemy"
-			bomb_enemy = $enemies.get_node("bomb_enemy")
+		elif enemy_type % 3 == 2:
+			var new_enemy = bomb_enemy.instantiate()
+			enemies.add_child(new_enemy)
+			new_enemy.show()
+			new_enemy.health = 7
 			enemies_spawned += 1
-		await get_tree().create_timer(2).timeout

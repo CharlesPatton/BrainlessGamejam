@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://q0jv5fqp1ru6"]
+
+[ext_resource type="Script" uid="uid://bfkhq07ukxgc4" path="res://bomb_enemy.gd" id="1_eg3es"]
+[ext_resource type="Texture2D" uid="uid://cxbtoxclpsih4" path="res://sprites/little_guy_2.png" id="1_h2kpn"]
+[ext_resource type="Texture2D" uid="uid://dfrap1h7sq68c" path="res://sprites/bomb.png" id="2_nh1tc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dk8rs"]
+size = Vector2(65, 72)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eg3es"]
+radius = 19.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nh1tc"]
+radius = 90.005554
+
+[sub_resource type="LabelSettings" id="LabelSettings_nh1tc"]
+
+[node name="bomb_enemy" type="CharacterBody2D" unique_id=1490206142]
+script = ExtResource("1_eg3es")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1443491007]
+position = Vector2(-5.5, -6)
+shape = SubResource("RectangleShape2D_dk8rs")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1444469183]
+texture = ExtResource("1_h2kpn")
+
+[node name="bomb" type="Area2D" parent="." unique_id=1282509962]
+visible = false
+light_mask = 4
+
+[node name="bomb_collision" type="CollisionShape2D" parent="bomb" unique_id=996126385]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_eg3es")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="bomb" unique_id=1466439360]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_nh1tc")
+
+[node name="explosion" type="Area2D" parent="." unique_id=957653806]
+visible = false
+light_mask = 4
+
+[node name="explosion_collision" type="CollisionShape2D" parent="explosion" unique_id=687694265]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_nh1tc")
+disabled = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1672139166]
+debug_enabled = true
+
+[node name="hitpoints" type="Label" parent="." unique_id=578543315]
+offset_left = -22.0
+offset_top = -63.0
+offset_right = 18.0
+offset_bottom = -40.0
+text = "7"
+label_settings = SubResource("LabelSettings_nh1tc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bombTimer" type="Timer" parent="." unique_id=195730994]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="bombTimer" to="." method="_on_bomb_timer_timeout"]
