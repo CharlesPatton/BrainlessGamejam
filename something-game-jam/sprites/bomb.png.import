@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjgho04we3flh"
-path="res://.godot/imported/little_guy_1.png-8352d8fe97d8b5c4f357e5eea9534084.ctex"
+uid="uid://dfrap1h7sq68c"
+path="res://.godot/imported/bomb.png-e64aff15375a44d3869552d2ac455436.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/little_guy_1.png"
-dest_files=["res://.godot/imported/little_guy_1.png-8352d8fe97d8b5c4f357e5eea9534084.ctex"]
+source_file="res://sprites/bomb.png"
+dest_files=["res://.godot/imported/bomb.png-e64aff15375a44d3869552d2ac455436.ctex"]
 
 [params]
 

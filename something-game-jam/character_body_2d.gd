@@ -77,10 +77,17 @@ func _on_swing_cooldown_timeout():
 
 
 func _on_player_hit_box_area_entered(area):
+	print(area.name)
 	if area.get_node("enemyBulletCollision"):
 		pass
 		#print("hit")
-		#player_stats["Health"] -= 1	
+		#player_stats["Health"] -= 1
+	if area.get_node("enemy_weapon_collision"):
+		print("Stabbed")
+		#player_stats["Health"] -= 4
+	if area.get_node("bomb_collision"):
+		print("Collided with bomb")
+		area.get_parent().explode_bomb()
 
 
 func _on_weapon_body_entered(body):
