@@ -33,4 +33,14 @@ func _ready() -> void:
 	level5.enemies = 1
 	level5.numberOfRounds = 1 
 	
-	
+func _process(delta: float) -> void:
+	if $level1/Button.button_pressed:
+		get_tree().change_scene_to_file("res://levels/world1/level1.tscn")
+	if $level2/Button.button_pressed:
+		get_tree().change_scene_to_file("res://levels/world1/level2.tscn")
+	if $level3/Button.button_pressed:
+		get_tree().change_scene_to_file("res://levels/world1/level3.tscn")
+	if $level4/Button.button_pressed:
+		get_tree().change_scene_to_file("res://levels/world1/level4.tscn")
+	if $level5/Node2D/Button.button_pressed:
+		get_tree().change_scene_to_file("res://levels/world1/level5.tscn")

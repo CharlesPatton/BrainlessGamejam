@@ -1,3 +1,19 @@
 [gd_scene format=3 uid="uid://cjfqhbu3ynbgo"]
 
-[node name="Level3" type="Node2D" unique_id=1501914379]
+[ext_resource type="Script" uid="uid://pa720c2mm72o" path="res://level.gd" id="1_5j4ey"]
+[ext_resource type="Texture2D" uid="uid://dogbvcstiab3c" path="res://sprites/1811794.png" id="2_ify0b"]
+
+[node name="level3" type="Node2D" unique_id=1620447238]
+script = ExtResource("1_5j4ey")
+
+[node name="Button" type="Button" parent="." unique_id=1539455338]
+offset_left = -20.0
+offset_top = -16.0
+offset_right = 18.0
+offset_bottom = 17.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Button" unique_id=1601437482]
+position = Vector2(20, 16)
+scale = Vector2(0.013678994, 0.013333334)
+texture = ExtResource("2_ify0b")
