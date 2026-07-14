@@ -14,6 +14,7 @@ offset_left = -20.0
 offset_top = -16.0
 offset_right = 18.0
 offset_bottom = 17.0
+flat = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="level1/Button" unique_id=1596748698]
@@ -22,13 +23,15 @@ scale = Vector2(0.013678994, 0.013333334)
 texture = ExtResource("3_vmmbu")
 
 [node name="level2" type="Node2D" parent="." unique_id=750679688]
-position = Vector2(354, 338)
+position = Vector2(325, 333)
+scale = Vector2(2, 2)
 
 [node name="Button" type="Button" parent="level2" unique_id=1327977260]
 offset_left = -20.0
 offset_top = -16.0
 offset_right = 18.0
 offset_bottom = 17.0
+flat = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="level2/Button" unique_id=82548625]
@@ -37,13 +40,15 @@ scale = Vector2(0.013678994, 0.013333334)
 texture = ExtResource("3_vmmbu")
 
 [node name="level3" type="Node2D" parent="." unique_id=1408389181]
-position = Vector2(524, 340)
+position = Vector2(500, 333)
+scale = Vector2(3, 3)
 
 [node name="Button" type="Button" parent="level3" unique_id=165219303]
 offset_left = -20.0
 offset_top = -16.0
 offset_right = 18.0
 offset_bottom = 17.0
+flat = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="level3/Button" unique_id=1811064454]
@@ -52,13 +57,15 @@ scale = Vector2(0.013678994, 0.013333334)
 texture = ExtResource("3_vmmbu")
 
 [node name="level4" type="Node2D" parent="." unique_id=1479707048]
-position = Vector2(674, 345)
+position = Vector2(725, 333)
+scale = Vector2(3.5, 3.5)
 
 [node name="Button" type="Button" parent="level4" unique_id=1217124672]
 offset_left = -24.0
 offset_top = -17.0
 offset_right = 14.0
 offset_bottom = 16.0
+flat = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="level4/Button" unique_id=646496469]
@@ -67,7 +74,7 @@ scale = Vector2(0.013613838, 0.014583333)
 texture = ExtResource("3_vmmbu")
 
 [node name="level5" type="Node2D" parent="." unique_id=1002850789]
-position = Vector2(943, 326)
+position = Vector2(943, 333)
 
 [node name="Node2D" type="Node2D" parent="level5" unique_id=479896775]
 position = Vector2(4, 8)
@@ -94,3 +101,14 @@ offset_right = 1056.0
 offset_bottom = 131.0
 text = "left to right click order, random might be too much work maybe just make 3 of these maps and have it be predetermined with 
 random items. also the shop will go here eventually"
+
+[node name="shop" type="Button" parent="." unique_id=2039056394]
+visible = false
+offset_left = 551.0
+offset_top = 500.0
+offset_right = 601.0
+offset_bottom = 535.0
+text = "Shop
+"
+
+[connection signal="pressed" from="shop" to="." method="_on_button_pressed"]

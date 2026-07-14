@@ -19,10 +19,10 @@ size = Vector2(70.875, 9)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dv36v"]
 size = Vector2(53, 57)
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_1ftpa"]
-vertices = PackedVector2Array(521.75, 473, 794.75, 472, 869, 472, 1150, 659.03906, 1150, -14.1015625, 1034.1797, 223.60938, 997, 213.64844, 915, 170.5, 915, 99.5, 1071.3516, 288, 1061.3906, 325.1797, 1061.3906, 250.82031, 959.8203, 223.60938, 1034.1797, 352.39063, 794.75, 170.5, 521.75, 397, 747, 170.5, 849, 99.5, 849, 100.13281, 813, 100.13281, 813, 99.5, 254, 397, 254, 137, 747, 99.5, 177.5, 137, 177.5, 397, 174.25, 397, 869, 170.5, 932.6094, 250.82031, 922.64844, 288, -12.7578125, -26.882813, 2.7734375, 663.9531, 174.25, 473, 997, 362.35156, 959.8203, 352.39063, 932.6094, 325.1797)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8), PackedInt32Array(9, 4, 3), PackedInt32Array(10, 9, 3), PackedInt32Array(4, 9, 11), PackedInt32Array(7, 6, 12), PackedInt32Array(13, 10, 3), PackedInt32Array(4, 11, 5), PackedInt32Array(14, 1, 0, 15, 16), PackedInt32Array(17, 18, 19, 20), PackedInt32Array(16, 15, 21, 22, 23), PackedInt32Array(24, 25, 26), PackedInt32Array(2, 27, 7, 28, 29), PackedInt32Array(30, 4, 8, 17), PackedInt32Array(30, 17, 20), PackedInt32Array(30, 20, 23), PackedInt32Array(30, 23, 22, 24), PackedInt32Array(31, 30, 24, 26), PackedInt32Array(31, 26, 32), PackedInt32Array(3, 31, 32, 0), PackedInt32Array(13, 3, 2, 33), PackedInt32Array(34, 33, 2), PackedInt32Array(7, 12, 28), PackedInt32Array(2, 29, 35), PackedInt32Array(34, 2, 35)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-23, -37, -7, 674, 1160, 669, 1160, -24)])
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_cd32o"]
+vertices = PackedVector2Array(1115.0078, 624.96094, 23.007813, 621.03125, 23.976563, 15.9921875, 1115.9766, 15)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(14, 6, 1126, 5, 1125, 635, 13, 631)])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jsiwy"]
 size = Vector2(285, 38.5)
@@ -33,21 +33,8 @@ size = Vector2(56.5, 258.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_etgx1"]
 size = Vector2(54.25, 351.875)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_aesmr"]
-radius = 119.60351
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdss8"]
-size = Vector2(46, 51)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gkayo"]
-radius = 23.0
-height = 258.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ee27"]
-size = Vector2(327.5, 56)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_cq7c8"]
-radius = 64.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cd32o"]
+size = Vector2(20, 606)
 
 [node name="level1" type="Node2D" unique_id=1615763410]
 script = ExtResource("1_jog3e")
@@ -57,7 +44,7 @@ process_mode = 3
 visible = false
 
 [node name="player" type="CharacterBody2D" parent="." unique_id=580992326]
-position = Vector2(560, 600)
+position = Vector2(568, 558)
 script = ExtResource("2_jsiwy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=1211089071]
@@ -117,157 +104,61 @@ shape = SubResource("RectangleShape2D_dv36v")
 
 [node name="enemies" type="Node2D" parent="." unique_id=1871215870]
 
-[node name="maps" type="Node2D" parent="." unique_id=1147479795]
+[node name="map" type="NavigationRegion2D" parent="." unique_id=864371137]
+navigation_polygon = SubResource("NavigationPolygon_cd32o")
 
-[node name="map1" type="NavigationRegion2D" parent="maps" unique_id=317056358]
-visible = false
-position = Vector2(26, 25)
-navigation_polygon = SubResource("NavigationPolygon_1ftpa")
-enabled = false
+[node name="StaticBody2D" type="StaticBody2D" parent="map" unique_id=431452629]
+position = Vector2(-3, 12)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="maps/map1" unique_id=431452629]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map1/StaticBody2D" unique_id=766389058]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="map/StaticBody2D" unique_id=766389058]
 position = Vector2(505, 120)
 shape = SubResource("RectangleShape2D_jsiwy")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="maps/map1" unique_id=1349911976]
+[node name="StaticBody2D2" type="StaticBody2D" parent="map" unique_id=1349911976]
+position = Vector2(-3, 12)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map1/StaticBody2D2" unique_id=547761281]
-position = Vector2(210, 371)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="map/StaticBody2D2" unique_id=547761281]
+position = Vector2(214, 299)
 shape = SubResource("RectangleShape2D_yatc5")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="maps/map1" unique_id=316638823]
+[node name="StaticBody2D3" type="StaticBody2D" parent="map" unique_id=316638823]
+position = Vector2(-3, 12)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map1/StaticBody2D3" unique_id=1253701913]
-position = Vector2(866, 337)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="map/StaticBody2D3" unique_id=1253701913]
+position = Vector2(835, 286)
 shape = SubResource("RectangleShape2D_etgx1")
 
-[node name="map2" type="NavigationRegion2D" parent="maps" unique_id=466045235]
-visible = false
-position = Vector2(26, 37)
-navigation_polygon = SubResource("NavigationPolygon_1ftpa")
-enabled = false
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1131075288]
+position = Vector2(24, 293)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="maps/map2" unique_id=489844352]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=289630635]
+position = Vector2(0, 23)
+shape = SubResource("RectangleShape2D_cd32o")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map2/StaticBody2D" unique_id=394971689]
-position = Vector2(521, 358)
-shape = SubResource("CircleShape2D_aesmr")
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1048301752]
+position = Vector2(1118, 293)
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="maps/map2" unique_id=2066970038]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1485413477]
+position = Vector2(0, 23)
+shape = SubResource("RectangleShape2D_cd32o")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map2/StaticBody2D2" unique_id=1839425089]
-position = Vector2(107, 306)
-shape = SubResource("RectangleShape2D_yatc5")
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=809922801]
+position = Vector2(532.00006, 622)
+rotation = -1.5707964
+scale = Vector2(1, 1.8399987)
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="maps/map2" unique_id=297815600]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=2078096380]
+position = Vector2(0, 23)
+shape = SubResource("RectangleShape2D_cd32o")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map2/StaticBody2D3" unique_id=1843487535]
-position = Vector2(1018, 319)
-shape = SubResource("RectangleShape2D_etgx1")
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=786554009]
+position = Vector2(526.00006, 23)
+rotation = -1.5707964
+scale = Vector2(1, 1.8399987)
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="maps/map2" unique_id=1455834427]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map2/StaticBody2D4" unique_id=1444237877]
-position = Vector2(221, 76)
-shape = SubResource("RectangleShape2D_xdss8")
-
-[node name="StaticBody2D5" type="StaticBody2D" parent="maps/map2" unique_id=1159996983]
-position = Vector2(637, 423)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map2/StaticBody2D5" unique_id=1363012747]
-position = Vector2(221, 76)
-shape = SubResource("RectangleShape2D_xdss8")
-
-[node name="map3" type="NavigationRegion2D" parent="maps" unique_id=39663507]
-visible = false
-position = Vector2(26, 37)
-navigation_polygon = SubResource("NavigationPolygon_1ftpa")
-enabled = false
-
-[node name="StaticBody2D" type="StaticBody2D" parent="maps/map3" unique_id=2027443088]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map3/StaticBody2D" unique_id=873924077]
-position = Vector2(957, 487)
-shape = SubResource("CapsuleShape2D_gkayo")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="maps/map3" unique_id=232158268]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map3/StaticBody2D2" unique_id=1587115419]
-position = Vector2(215.75, 276.375)
-shape = SubResource("RectangleShape2D_yatc5")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="maps/map3" unique_id=1334795007]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map3/StaticBody2D3" unique_id=1457650486]
-position = Vector2(907, 497)
-shape = SubResource("RectangleShape2D_etgx1")
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="maps/map3" unique_id=910980128]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map3/StaticBody2D4" unique_id=598144978]
-position = Vector2(957, 105)
-shape = SubResource("RectangleShape2D_xdss8")
-
-[node name="StaticBody2D5" type="StaticBody2D" parent="maps/map3" unique_id=212822131]
-position = Vector2(637, 423)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map3/StaticBody2D5" unique_id=2126954693]
-position = Vector2(221, 76)
-shape = SubResource("RectangleShape2D_xdss8")
-
-[node name="map4" type="NavigationRegion2D" parent="maps" unique_id=1868888243]
-visible = false
-position = Vector2(26, 37)
-navigation_polygon = SubResource("NavigationPolygon_1ftpa")
-enabled = false
-
-[node name="StaticBody2D" type="StaticBody2D" parent="maps/map4" unique_id=277970618]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map4/StaticBody2D" unique_id=511396316]
-position = Vector2(348, 435)
-shape = SubResource("RectangleShape2D_2ee27")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="maps/map4" unique_id=1223908288]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map4/StaticBody2D2" unique_id=463778607]
-position = Vector2(215.75, 276.375)
-shape = SubResource("RectangleShape2D_yatc5")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="maps/map4" unique_id=1736272912]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map4/StaticBody2D3" unique_id=1863785203]
-position = Vector2(831.875, 286.0625)
-shape = SubResource("RectangleShape2D_etgx1")
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="maps/map4" unique_id=711929438]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map4/StaticBody2D4" unique_id=957589445]
-position = Vector2(882, 135)
-shape = SubResource("RectangleShape2D_xdss8")
-
-[node name="StaticBody2D5" type="StaticBody2D" parent="maps/map4" unique_id=901848408]
-position = Vector2(637, 423)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map4/StaticBody2D5" unique_id=1971600965]
-position = Vector2(143, -288)
-shape = SubResource("RectangleShape2D_xdss8")
-
-[node name="StaticBody2D6" type="StaticBody2D" parent="maps/map4" unique_id=1092192960]
-position = Vector2(637, 423)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/map4/StaticBody2D6" unique_id=1136070348]
-position = Vector2(360, -135)
-shape = SubResource("CircleShape2D_cq7c8")
-
-[node name="StaticBody2D5" type="StaticBody2D" parent="maps" unique_id=1318570900]
-visible = false
-position = Vector2(637, 423)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="maps/StaticBody2D5" unique_id=1354761435]
-position = Vector2(143, -288)
-shape = SubResource("RectangleShape2D_xdss8")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=362947177]
+position = Vector2(0, 23)
+shape = SubResource("RectangleShape2D_cd32o")
 
 [connection signal="body_entered" from="player/bullet" to="player" method="_on_bullet_body_entered"]
 [connection signal="timeout" from="player/bullet/Timer" to="player/bullet" method="_on_timer_timeout"]

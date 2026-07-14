@@ -28,7 +28,6 @@ func move_player():
 
 func shoot(delta):
 	if Input.is_action_pressed("shoot") and canShoot:
-		print("SHOOTING")
 		canShoot = false
 		var copyb = bullet.duplicate()
 		$player_bullets.add_child(copyb)
@@ -36,9 +35,6 @@ func shoot(delta):
 		copyb.global_position = global_position
 		var direction = (get_global_mouse_position() - global_position).normalized()
 		copyb.direction = direction
-		
-		print(global_position)
-		print(copyb.global_position)
 		
 		copyb.visible = true
 		copyb.get_node("Timer").start() #Will start timer to remove bullet from scene after 1 seconds
@@ -83,16 +79,14 @@ func _on_swing_cooldown_timeout():
 
 
 func _on_player_hit_box_area_entered(area):
-	print(area.name)
 	if area.get_node("enemyBulletCollision"):
 		pass
 		#print("hit")
 		#player_stats["Health"] -= 1
 	if area.get_node("enemy_weapon_collision"):
-		print("Stabbed")
 		#player_stats["Health"] -= 4
+		pass
 	if area.get_node("bomb_collision"):
-		print("Collided with bomb")
 		area.get_parent().explode_bomb()
 
 
@@ -100,11 +94,9 @@ func _on_weapon_body_entered(body):
 	if body.get_parent().name == "enemies":
 		#print("HIT ENEMY MELEE")
 		body.health -= player_stats["MeleeDamage"]
-		print(player_stats["MeleeDamage"])
 
 
 func _on_bullet_body_entered(body):
 	if body.get_parent().name == "enemies":
 		#print("HIT ENEMY RANGED")
 		body.health -= player_stats["RangeDamage"]
-		print(player_stats["RangeDamage"])

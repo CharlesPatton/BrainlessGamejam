@@ -5,7 +5,18 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	if not playerClass.littleGuys[1]["owned"]:
+		$screen1/class1.modulate = Color(1.0, 1.0, 1.0, 0.500)
+	if not playerClass.littleGuys[2]["owned"]:
+		$screen1/class2.modulate = Color(1.0, 1.0, 1.0, 0.500)
+	if not playerClass.littleGuys[3]["owned"]:
+		$screen1/class3.modulate = Color(1.0, 1.0, 1.0, 0.500)
+	if not playerClass.littleGuys[4]["owned"]:
+		$screen1/class4.modulate = Color(1.0, 1.0, 1.0, 0.500)
+	if not playerClass.littleGuys[5]["owned"]:
+		$screen1/class5.modulate = Color(1.0, 1.0, 1.0, 0.500)
+	if not playerClass.littleGuys[6]["owned"]:
+		$screen1/class6.modulate = Color(1.0, 1.0, 1.0, 0.500)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -15,7 +26,7 @@ func switch_screens():
 	if screen1.visible:
 		playerClass.calc_stats_final()
 		var player_stats = playerClass.updated_stats
-		var player_items = playerClass.littleGuyItems[playerClass.playerClass]
+		var player_items = playerClass.littleGuys[playerClass.playerClass]["items"]
 		var control = $screen2/Control
 		var index = 0
 		

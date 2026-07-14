@@ -53,7 +53,6 @@ func _physics_process(delta: float) -> void:
 	
 
 func _on_swing_cooldown_timeout():
-	print("Swinging")
 	weapon.show()
 	weapon.get_node("enemy_weapon_collision").disabled = false
 	

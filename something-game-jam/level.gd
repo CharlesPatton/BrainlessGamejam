@@ -31,7 +31,8 @@ func _process(delta: float) -> void:
 	if enemies.get_child_count() == 0 and num_enemies == enemies_spawned:
 		print("ENEMIES GONE")
 		if curr_round == numberOfRounds:
-			get_tree().change_scene_to_file("res://map.tscn")
+			playerClass.levels_beaten += 1
+			get_tree().change_scene_to_file("res://shop.tscn")
 		print("NEW ROUND")
 		enemies_spawned = 0
 		initialize_round()

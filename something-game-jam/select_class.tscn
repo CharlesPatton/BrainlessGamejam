@@ -21,7 +21,7 @@ font_size = 30
 shadow_size = 5
 shadow_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcxuq"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lntu"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 3
 border_width_top = 3
@@ -30,7 +30,7 @@ border_width_bottom = 3
 border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Theme" id="Theme_0h0hh"]
-Label/styles/normal = SubResource("StyleBoxFlat_xcxuq")
+Label/styles/normal = SubResource("StyleBoxFlat_5lntu")
 
 [sub_resource type="Theme" id="Theme_5lntu"]
 
@@ -44,7 +44,7 @@ font_size = 30
 shadow_size = 5
 shadow_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lntu"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4lus"]
 content_margin_left = 30.0
 content_margin_top = 10.0
 content_margin_bottom = 10.0
@@ -60,7 +60,7 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
 [sub_resource type="Theme" id="Theme_s4lus"]
-Label/styles/normal = SubResource("StyleBoxFlat_5lntu")
+Label/styles/normal = SubResource("StyleBoxFlat_s4lus")
 
 [sub_resource type="LabelSettings" id="LabelSettings_71h8b"]
 font_size = 25

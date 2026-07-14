@@ -4,6 +4,71 @@
 [ext_resource type="Texture2D" uid="uid://drr7onxga5aff" path="res://sprites/winged_boots_card.png" id="2_fgaav"]
 [ext_resource type="Texture2D" uid="uid://dbjm21otrqev8" path="res://sprites/shield_card.png" id="3_6lah5"]
 [ext_resource type="Texture2D" uid="uid://c20m2ix6yvgp3" path="res://sprites/axe_card.png" id="4_gmb2m"]
+[ext_resource type="Texture2D" uid="uid://bjgho04we3flh" path="res://sprites/little_guy_1.png" id="5_gmb2m"]
+[ext_resource type="Texture2D" uid="uid://cxbtoxclpsih4" path="res://sprites/little_guy_2.png" id="6_8kdgp"]
+[ext_resource type="Texture2D" uid="uid://c4d5xn46mjwto" path="res://sprites/little_guy_3.png" id="7_xqmyw"]
+[ext_resource type="Texture2D" uid="uid://c0udlrx42lv0u" path="res://sprites/little_guy_4.png" id="8_sw5c6"]
+[ext_resource type="Texture2D" uid="uid://ffcxoy15kfli" path="res://sprites/little_guy_5.png" id="9_msgp6"]
+[ext_resource type="Texture2D" uid="uid://bjc1tkwuq0y7p" path="res://sprites/c26dbd8e0d813f2963ec16a484acc26f.png" id="10_e23gp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rrolr"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_gmb2m"]
+font_size = 30
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8kdgp"]
+font_size = 30
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcxuq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_myf4l"]
+Label/styles/normal = SubResource("StyleBoxFlat_xcxuq")
+
+[sub_resource type="Theme" id="Theme_p5a0g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xqmyw"]
+font_size = 25
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sw5c6"]
+font_size = 30
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lntu"]
+content_margin_left = 30.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id="Theme_msgp6"]
+Label/styles/normal = SubResource("StyleBoxFlat_5lntu")
+
+[sub_resource type="LabelSettings" id="LabelSettings_e23gp"]
+font_size = 25
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="shop" type="Control" unique_id=666448318]
 layout_mode = 3
@@ -14,7 +79,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_viryw")
 
-[node name="map" type="Button" parent="." unique_id=1455547108]
+[node name="screen1" type="Control" parent="." unique_id=1107290624]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="map" type="Button" parent="screen1" unique_id=1455547108]
 layout_mode = 0
 offset_left = 576.0
 offset_top = 456.0
@@ -22,37 +92,361 @@ offset_right = 683.0
 offset_bottom = 487.0
 text = "Back To Map"
 
-[node name="item_1" type="Sprite2D" parent="." unique_id=600095414]
+[node name="item_1" type="Sprite2D" parent="screen1" unique_id=600095414]
 position = Vector2(204, 132)
 texture = ExtResource("2_fgaav")
 
-[node name="item_1" type="Button" parent="item_1" unique_id=1784298469]
+[node name="item_1" type="Button" parent="screen1/item_1" unique_id=1784298469]
 offset_left = -128.0
 offset_top = -126.0
 offset_right = 126.0
 offset_bottom = 124.0
 
-[node name="item_2" type="Sprite2D" parent="." unique_id=1777375780]
+[node name="item_2" type="Sprite2D" parent="screen1" unique_id=1777375780]
 position = Vector2(632, 139)
 texture = ExtResource("3_6lah5")
 
-[node name="item_2" type="Button" parent="item_2" unique_id=1401271198]
+[node name="item_2" type="Button" parent="screen1/item_2" unique_id=1401271198]
 offset_left = -127.0
 offset_top = -126.0
 offset_right = 124.0
 offset_bottom = 127.0
 
-[node name="item_3" type="Sprite2D" parent="." unique_id=289244235]
+[node name="item_3" type="Sprite2D" parent="screen1" unique_id=289244235]
 position = Vector2(995, 138)
 texture = ExtResource("4_gmb2m")
 
-[node name="item_3" type="Button" parent="item_3" unique_id=1769287408]
+[node name="item_3" type="Button" parent="screen1/item_3" unique_id=1769287408]
 offset_left = -129.0
 offset_top = -128.0
 offset_right = 129.0
 offset_bottom = 127.0
 
-[connection signal="pressed" from="map" to="." method="_on_map_pressed"]
-[connection signal="pressed" from="item_1/item_1" to="." method="_on_item_1_pressed"]
-[connection signal="pressed" from="item_2/item_2" to="." method="_on_item_2_pressed"]
-[connection signal="pressed" from="item_3/item_3" to="." method="_on_item_3_pressed"]
+[node name="character_1" type="Sprite2D" parent="screen1" unique_id=1231238362]
+visible = false
+position = Vector2(273, 404)
+texture = ExtResource("5_gmb2m")
+
+[node name="Button" type="Button" parent="screen1/character_1" unique_id=514784839]
+offset_left = -41.0
+offset_top = -53.0
+offset_right = 31.0
+offset_bottom = 43.0
+
+[node name="character_2" type="Sprite2D" parent="screen1" unique_id=472209078]
+visible = false
+position = Vector2(904, 433)
+texture = ExtResource("6_8kdgp")
+
+[node name="Button" type="Button" parent="screen1/character_2" unique_id=1919285920]
+offset_left = -36.0
+offset_top = -46.0
+offset_right = 26.0
+offset_bottom = 33.0
+
+[node name="screen2" type="Control" parent="." unique_id=1557531701]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="class1" type="Sprite2D" parent="screen2" unique_id=1572523080]
+position = Vector2(200, 150)
+texture = ExtResource("5_gmb2m")
+
+[node name="Label" type="Label" parent="screen2/class1" unique_id=1388715156]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = 20.0
+offset_right = -38.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Class 1"
+label_settings = SubResource("LabelSettings_rrolr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="class1" type="Button" parent="screen2/class1" unique_id=1901510825]
+modulate = Color(1, 1, 1, 0)
+offset_left = -71.0
+offset_top = -69.0
+offset_right = 72.0
+offset_bottom = 92.0
+
+[node name="class2" type="Sprite2D" parent="screen2" unique_id=656204871]
+position = Vector2(562, 133)
+texture = ExtResource("6_8kdgp")
+
+[node name="Label" type="Label" parent="screen2/class2" unique_id=1109856018]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -66.0
+offset_top = 40.0
+offset_right = -34.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Class 2"
+label_settings = SubResource("LabelSettings_rrolr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="class2" type="Button" parent="screen2/class2" unique_id=41274154]
+modulate = Color(1, 1, 1, 0)
+offset_left = -74.0
+offset_top = -61.0
+offset_right = 77.0
+offset_bottom = 87.0
+
+[node name="class3" type="Sprite2D" parent="screen2" unique_id=416166434]
+position = Vector2(908, 140)
+texture = ExtResource("7_xqmyw")
+
+[node name="Label" type="Label" parent="screen2/class3" unique_id=281880415]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -63.0
+offset_top = 42.0
+offset_right = -31.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Class 3"
+label_settings = SubResource("LabelSettings_rrolr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="class3" type="Button" parent="screen2/class3" unique_id=1151319823]
+modulate = Color(1, 1, 1, 0)
+offset_left = -66.0
+offset_top = -64.0
+offset_right = 88.0
+offset_bottom = 93.0
+
+[node name="class4" type="Sprite2D" parent="screen2" unique_id=1165784370]
+position = Vector2(200, 400)
+texture = ExtResource("8_sw5c6")
+
+[node name="Label" type="Label" parent="screen2/class4" unique_id=334901250]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -69.0
+offset_top = 22.0
+offset_right = -37.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Class 4"
+label_settings = SubResource("LabelSettings_rrolr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="class4" type="Button" parent="screen2/class4" unique_id=1861885521]
+modulate = Color(1, 1, 1, 0)
+offset_left = -78.0
+offset_top = -56.0
+offset_right = 72.0
+offset_bottom = 97.0
+
+[node name="class5" type="Sprite2D" parent="screen2" unique_id=1637664311]
+position = Vector2(550, 400)
+texture = ExtResource("9_msgp6")
+
+[node name="Label" type="Label" parent="screen2/class5" unique_id=1278676953]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -74.0
+offset_top = 29.0
+offset_right = -42.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Class 5"
+label_settings = SubResource("LabelSettings_rrolr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="class5" type="Button" parent="screen2/class5" unique_id=1897955401]
+modulate = Color(1, 1, 1, 0)
+offset_left = -92.0
+offset_top = -71.0
+offset_right = 84.0
+offset_bottom = 103.0
+
+[node name="class6" type="Sprite2D" parent="screen2" unique_id=1757531158]
+position = Vector2(900, 400)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_e23gp")
+
+[node name="Label" type="Label" parent="screen2/class6" unique_id=1879003827]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -338.5
+offset_right = -338.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Class 6"
+label_settings = SubResource("LabelSettings_rrolr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="class6" type="Button" parent="screen2/class6" unique_id=911056154]
+modulate = Color(1, 1, 1, 0)
+offset_left = -346.66675
+offset_top = -450.0
+offset_right = 370.0
+offset_bottom = 499.99994
+
+[node name="back_to_items" type="Button" parent="screen2" unique_id=2054933876]
+layout_mode = 0
+offset_left = 506.0
+offset_top = 558.0
+offset_right = 619.0
+offset_bottom = 589.0
+text = "Back to Items"
+
+[node name="screen3" type="Control" parent="." unique_id=2021889084]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="chosen_guy_name" type="Label" parent="screen3" unique_id=1194347297]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 130.0
+offset_right = 295.0
+offset_bottom = 183.0
+text = "Template"
+label_settings = SubResource("LabelSettings_gmb2m")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="chosen_guy_sprite" type="Sprite2D" parent="screen3" unique_id=605498799]
+position = Vector2(199, 286)
+scale = Vector2(2, 2)
+
+[node name="items" type="Label" parent="screen3" unique_id=1794999129]
+layout_mode = 0
+offset_left = 425.0
+offset_top = 130.0
+offset_right = 507.0
+offset_bottom = 172.0
+text = "Items"
+label_settings = SubResource("LabelSettings_8kdgp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="screen3" unique_id=1199890994]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_myf4l")
+
+[node name="item1" type="Label" parent="screen3/Control" unique_id=1383939442]
+layout_mode = 0
+offset_left = 375.0
+offset_top = 190.0
+offset_right = 563.0
+offset_bottom = 225.0
+theme = SubResource("Theme_p5a0g")
+text = "Item 1"
+label_settings = SubResource("LabelSettings_xqmyw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item2" type="Label" parent="screen3/Control" unique_id=460970809]
+layout_mode = 0
+offset_left = 375.0
+offset_top = 240.0
+offset_right = 563.0
+offset_bottom = 275.0
+text = "Item 2"
+label_settings = SubResource("LabelSettings_xqmyw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item3" type="Label" parent="screen3/Control" unique_id=2029322887]
+layout_mode = 0
+offset_left = 375.0
+offset_top = 290.0
+offset_right = 563.0
+offset_bottom = 325.0
+text = "Item 3"
+label_settings = SubResource("LabelSettings_xqmyw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item4" type="Label" parent="screen3/Control" unique_id=1234590168]
+layout_mode = 0
+offset_left = 375.0
+offset_top = 340.0
+offset_right = 563.0
+offset_bottom = 375.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "Item 4"
+label_settings = SubResource("LabelSettings_xqmyw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="stats" type="Label" parent="screen3" unique_id=1793920162]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 100.0
+offset_right = 822.0
+offset_bottom = 142.0
+text = "Stats"
+label_settings = SubResource("LabelSettings_sw5c6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="individual_stats_label" type="Label" parent="screen3" unique_id=1875035140]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 150.0
+offset_right = 1013.0
+offset_bottom = 395.0
+theme = SubResource("Theme_msgp6")
+text = "Health:                                    20
+Melee Damage:                        4
+Range Damage:                        1
+Speed:                                       5
+Melee Speed:                         0.2
+Range Speed:                         0.1"
+label_settings = SubResource("LabelSettings_e23gp")
+
+[node name="confirm_purchase" type="Button" parent="screen3" unique_id=331564989]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 500.0
+offset_right = 526.0
+offset_bottom = 575.0
+text = "Confirm Purchase"
+
+[node name="back_to_classes" type="Button" parent="screen3" unique_id=1574545219]
+layout_mode = 0
+offset_left = 626.0
+offset_top = 500.0
+offset_right = 926.0
+offset_bottom = 575.0
+text = "Back to Classes"
+
+[connection signal="pressed" from="screen1/map" to="." method="_on_map_pressed"]
+[connection signal="pressed" from="screen2/class1/class1" to="." method="_on_class_1_pressed"]
+[connection signal="pressed" from="screen2/class2/class2" to="." method="_on_class_2_pressed"]
+[connection signal="pressed" from="screen2/class3/class3" to="." method="_on_class_3_pressed"]
+[connection signal="pressed" from="screen2/class4/class4" to="." method="_on_class_4_pressed"]
+[connection signal="pressed" from="screen2/class5/class5" to="." method="_on_class_5_pressed"]
+[connection signal="pressed" from="screen2/class6/class6" to="." method="_on_class_6_pressed"]
+[connection signal="pressed" from="screen2/back_to_items" to="." method="_on_back_to_items_pressed"]
+[connection signal="pressed" from="screen3/confirm_purchase" to="." method="_on_confirm_purchase_pressed"]
+[connection signal="pressed" from="screen3/back_to_classes" to="." method="_on_back_to_classes_pressed"]

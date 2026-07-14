@@ -17,14 +17,33 @@ var updated_stats = {}
 var playerClass = 0
 
 #GLOBAL STORAGE FOR ITEMS FOR EACH LITTLE GUY
-var littleGuyItems = {
-	1: [1, 2],
-	2: [3, 4],
-	3: [5, 6],
-	4: [7, 8],
-	5: [9, 0],
-	6: [11, 12]
+var littleGuys = {
+	1: {
+		owned = true,
+		items = [],
+	},
+	2: {
+		owned = false,
+		items = [],
+	},
+	3: {
+		owned = false,
+		items = [],
+	},
+	4: {
+		owned = false,
+		items = [],
+	},
+	5: {
+		owned = false,
+		items = [],
+	},
+	6: {
+		owned = false,
+		items = [],
+	},
 }
+
 
 var game_paused = false
 
@@ -32,6 +51,8 @@ var game_paused = false
 var num_enemies
 var numberOfRounds
 var map
+
+var levels_beaten = 0
 
 
 
@@ -70,7 +91,11 @@ func calc_class():
 		print(updated_stats)
 
 func calc_items():
-	for item in littleGuyItems[playerClass]:
+	if not littleGuys[playerClass]["owned"]:
+		print("No Items")
+		return
+	
+	for item in littleGuys[playerClass]["items"]:
 		if item == 1:
 			updated_stats["Health"] += 7
 		elif item == 2:
