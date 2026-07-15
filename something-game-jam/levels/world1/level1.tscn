@@ -19,19 +19,13 @@ size = Vector2(70.875, 9)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dv36v"]
 size = Vector2(53, 57)
 
+[sub_resource type="LabelSettings" id="LabelSettings_cd32o"]
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_cd32o"]
-vertices = PackedVector2Array(1115.0078, 624.96094, 23.007813, 621.03125, 23.976563, 15.9921875, 1115.9766, 15)
+vertices = PackedVector2Array(1105.0313, 614.9219, 33.03125, 611.0703, 33.960938, 25.976563, 1105.9609, 25.007813)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(14, 6, 1126, 5, 1125, 635, 13, 631)])
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jsiwy"]
-size = Vector2(285, 38.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yatc5"]
-size = Vector2(56.5, 258.75)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_etgx1"]
-size = Vector2(54.25, 351.875)
+agent_radius = 20.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cd32o"]
 size = Vector2(20, 606)
@@ -102,31 +96,19 @@ shape = SubResource("RectangleShape2D_dv36v")
 
 [node name="player_bullets" type="Node2D" parent="player" unique_id=1353814018]
 
+[node name="hitpoints" type="Label" parent="player" unique_id=51303067]
+offset_left = -20.0
+offset_top = -61.0
+offset_right = 20.0
+offset_bottom = -38.0
+label_settings = SubResource("LabelSettings_cd32o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="enemies" type="Node2D" parent="." unique_id=1871215870]
 
 [node name="map" type="NavigationRegion2D" parent="." unique_id=864371137]
 navigation_polygon = SubResource("NavigationPolygon_cd32o")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="map" unique_id=431452629]
-position = Vector2(-3, 12)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="map/StaticBody2D" unique_id=766389058]
-position = Vector2(505, 120)
-shape = SubResource("RectangleShape2D_jsiwy")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="map" unique_id=1349911976]
-position = Vector2(-3, 12)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="map/StaticBody2D2" unique_id=547761281]
-position = Vector2(214, 299)
-shape = SubResource("RectangleShape2D_yatc5")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="map" unique_id=316638823]
-position = Vector2(-3, 12)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="map/StaticBody2D3" unique_id=1253701913]
-position = Vector2(835, 286)
-shape = SubResource("RectangleShape2D_etgx1")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1131075288]
 position = Vector2(24, 293)

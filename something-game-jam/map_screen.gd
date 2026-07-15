@@ -10,7 +10,33 @@ var globalObject = playerClass
 
 #all these map names are temporary
 func _ready() -> void:
-	pass 
+	print("READY")
+	level2.modulate = Color(125, 0, 0)
+	level3.modulate = Color(125, 0, 0)
+	level4.modulate = Color(125, 0, 0)
+	level5.modulate = Color(125, 0, 0)
+	
+	
+	if globalObject.levels_beaten > 0:
+		level1.modulate = Color(0, 125, 0)
+		level2.modulate = Color(0, 0, 0)
+	
+	if globalObject.levels_beaten > 1:
+		level2.modulate = Color(0, 125, 0)
+		level3.modulate = Color(0, 0, 0)
+	
+	if globalObject.levels_beaten > 2:
+		level3.modulate = Color(0, 125, 0)
+		level4.modulate = Color(0, 0, 0)
+	
+	if globalObject.levels_beaten > 3:
+		level4.modulate = Color(0, 125, 0)
+		level5.modulate = Color(0, 0, 0)
+	
+	if globalObject.levels_beaten > 4:
+		level5.modulate = Color(0, 125, 0)
+		print("YOU WIN!")
+	
 	
 func _process(delta: float) -> void:
 	if globalObject.levels_beaten > 0:
@@ -65,9 +91,10 @@ func _process(delta: float) -> void:
 
 
 func flash_button_error(level):
+	var og_color = level.modulate
 	level.modulate = Color(125, 0, 0)
 	await get_tree().create_timer(0.5).timeout
-	level.modulate = Color(0, 0, 0)
+	level.modulate = og_color
 
 
 func _on_button_pressed():

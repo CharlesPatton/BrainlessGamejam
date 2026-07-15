@@ -5,18 +5,24 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if not playerClass.littleGuys[1]["owned"]:
+	if not playerClass.littleGuys[1]["owned"] or not playerClass.littleGuys[1]["alive"]:
 		$screen1/class1.modulate = Color(1.0, 1.0, 1.0, 0.500)
-	if not playerClass.littleGuys[2]["owned"]:
+		$screen1/class1/class1.disabled = true
+	if not playerClass.littleGuys[2]["owned"] or not playerClass.littleGuys[2]["alive"]:
 		$screen1/class2.modulate = Color(1.0, 1.0, 1.0, 0.500)
-	if not playerClass.littleGuys[3]["owned"]:
+		$screen1/class2/class2.disabled = true
+	if not playerClass.littleGuys[3]["owned"] or not playerClass.littleGuys[3]["alive"]: 
 		$screen1/class3.modulate = Color(1.0, 1.0, 1.0, 0.500)
-	if not playerClass.littleGuys[4]["owned"]:
+		$screen1/class3/class3.disabled = true
+	if not playerClass.littleGuys[4]["owned"] or not playerClass.littleGuys[4]["alive"]:
 		$screen1/class4.modulate = Color(1.0, 1.0, 1.0, 0.500)
-	if not playerClass.littleGuys[5]["owned"]:
+		$screen1/class4/class4.disabled = true
+	if not playerClass.littleGuys[5]["owned"] or not playerClass.littleGuys[5]["alive"]:
 		$screen1/class5.modulate = Color(1.0, 1.0, 1.0, 0.500)
-	if not playerClass.littleGuys[6]["owned"]:
+		$screen1/class5/class5.disabled = true
+	if not playerClass.littleGuys[6]["owned"] or not playerClass.littleGuys[6]["alive"]:
 		$screen1/class6.modulate = Color(1.0, 1.0, 1.0, 0.500)
+		$screen1/class6/class6.disabled = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

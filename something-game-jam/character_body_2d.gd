@@ -6,8 +6,16 @@ var canShoot = true
 var canSwing = true
 
 var player_stats = playerClass.updated_stats
+var initial_health = player_stats["Health"]
 
 func _process(delta: float) -> void:
+	$hitpoints.text = str(player_stats["Health"])
+	if player_stats["Health"] <= initial_health / 3:
+		$hitpoints.label_settings.font_color = Color(255, 0, 0)
+	elif player_stats["Health"] <= initial_health * 2 / 3:
+		$hitpoints.label_settings.font_color = Color(255, 255, 0)
+	else:
+		$hitpoints.label_settings.font_color = Color(0, 255, 0)
 	move_player()
 	shoot(delta)
 
@@ -79,12 +87,13 @@ func _on_swing_cooldown_timeout():
 
 
 func _on_player_hit_box_area_entered(area):
+	print(area.name)
 	if area.get_node("enemyBulletCollision"):
-		pass
 		#print("hit")
-		#player_stats["Health"] -= 1
+		player_stats["Health"] -= 1
+		#pass
 	if area.get_node("enemy_weapon_collision"):
-		#player_stats["Health"] -= 4
+		player_stats["Health"] -= 4
 		pass
 	if area.get_node("bomb_collision"):
 		area.get_parent().explode_bomb()

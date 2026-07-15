@@ -5,7 +5,7 @@ var base_stats = {
 	"Health": 20,
 	"MeleeDamage": 4,
 	"RangeDamage": 1,
-	"Speed": 3,
+	"Speed": 4,
 	"MeleeSpeed": 0.25,
 	"RangeSpeed": 0.2,
 }
@@ -16,33 +16,45 @@ var updated_stats = {}
 #THE CLASS THE PLAYER CHOOSES TO PLAY AS DURING ENCOUNTER
 var playerClass = 0
 
+#THE CURRENT NUMBER OF COINS THE PLAYER HAS
+var coins = 0
+
 #GLOBAL STORAGE FOR ITEMS FOR EACH LITTLE GUY
 var littleGuys = {
 	1: {
 		owned = true,
+		alive = true,
 		items = [],
 	},
 	2: {
-		owned = false,
+		owned = true,
+		alive = true,
 		items = [],
 	},
 	3: {
 		owned = false,
+		alive = true,
 		items = [],
 	},
 	4: {
 		owned = false,
+		alive = true,
 		items = [],
 	},
 	5: {
 		owned = false,
+		alive = true,
 		items = [],
 	},
 	6: {
 		owned = false,
+		alive = true,
 		items = [],
 	},
 }
+
+var num_guys = 1
+var num_alive_guys = 1
 
 
 var game_paused = false
@@ -97,21 +109,25 @@ func calc_items():
 	
 	for item in littleGuys[playerClass]["items"]:
 		if item == 1:
-			updated_stats["Health"] += 7
-		elif item == 2:
-			updated_stats["MeleeDamage"] += 3
-		elif item == 3:
-			updated_stats["RangeDamage"] += 4
-		elif item == 4:
-			updated_stats["Speed"] += 0.5
-		elif item == 5:
+			updated_stats["Speed"] += 2
 			updated_stats["MeleeSpeed"] -= 0.05
-		elif item == 6:
-			updated_stats["RangeSpeed"] -= 0.1
+			updated_stats["RangeSpeed"] -= 0.05
+		elif item == 2:
+			updated_stats["Health"] += 20
+		elif item == 3:
+			updated_stats["MeleeDamage"] += 3
+		
+		#CAN'T DO THE REST IN THE FUTURE, BUT THIS IS FOR NOW
+		#elif item == 4:
+			#updated_stats["Speed"] += 0.5
+		#elif item == 5:
+			#updated_stats["MeleeSpeed"] -= 0.05
+		#elif item == 6:
+			#updated_stats["RangeSpeed"] -= 0.1
 
 	print(updated_stats)
 
 func calc_stats_final():
 	updated_stats = base_stats.duplicate()
-	calc_class()
 	calc_items()
+	calc_class()

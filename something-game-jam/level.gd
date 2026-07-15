@@ -20,6 +20,7 @@ var enemies_spawned = 0
 var curr_round = 0
 
 func _ready():
+	playerClass.calc_stats_final()
 	initialize_round()
 	print()
 
@@ -32,17 +33,24 @@ func _process(delta: float) -> void:
 		print("ENEMIES GONE")
 		if curr_round == numberOfRounds:
 			playerClass.levels_beaten += 1
-			get_tree().change_scene_to_file("res://shop.tscn")
+			get_tree().change_scene_to_file("res://map_screen.tscn")
 		print("NEW ROUND")
 		enemies_spawned = 0
 		initialize_round()
 		
 	elif player.player_stats["Health"] <= 0:
-		print("DIED")
-		get_tree().change_scene_to_file("res://map.tscn")
+		print("CLASS DIED")
+		playerClass.littleGuys[playerClass.playerClass]["alive"] = false
+		playerClass.num_alive_guys -= 1
+		print(playerClass.littleGuys)
+		if playerClass.num_alive_guys == 0:
+			get_tree().change_scene_to_file("res://map.tscn")
+		else:
+			pause_game()
 
 func pause_game():
 	print("Change Character")
+	selectClass._ready()
 	get_tree().paused = not get_tree().paused
 	playerClass.game_paused = not playerClass.game_paused
 	selectClass.visible = not selectClass.visible
@@ -54,7 +62,7 @@ func pause_game():
 func initialize_round():
 	curr_round += 1
 	for i in range(num_enemies):
-		var enemy_type = i + 1 #random.randi_range(1, 3)
+		var enemy_type = random.randi_range(1, 3)
 		print("------")
 		print("SPAWNING ENEMY")
 		print(enemy_type)
