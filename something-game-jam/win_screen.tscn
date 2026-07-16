@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dr2n8kuyexxo2"]
+
+[ext_resource type="Script" uid="uid://bqbiiue1hbtst" path="res://win_screen.gd" id="1_l2arl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_731nq"]
+font_size = 40
+
+[node name="win_screen" type="Control" unique_id=1756648758]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l2arl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=320995664]
+
+[node name="fade" type="ColorRect" parent="CanvasLayer" unique_id=1169453661]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0.49019608, 0, 1)
+
+[node name="background" type="Sprite2D" parent="CanvasLayer" unique_id=267088939]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1381894686]
+offset_left = 398.0
+offset_top = 69.0
+offset_right = 787.0
+offset_bottom = 124.0
+text = "YOU ARE A WINNER!"
+label_settings = SubResource("LabelSettings_731nq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=380418294]
+offset_left = 437.0
+offset_top = 266.0
+offset_right = 752.0
+offset_bottom = 325.0
+text = "Back to Title"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

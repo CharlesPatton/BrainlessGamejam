@@ -5,14 +5,32 @@ var selected_class = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if not playerClass.littleGuys[1]["owned"] or not playerClass.littleGuys[1]["alive"]:
+		$screen2/class1.modulate = Color(1.0, 1.0, 1.0, 0.500)
+		$screen2/class1/class1.disabled = true
+	if not playerClass.littleGuys[2]["owned"] or not playerClass.littleGuys[2]["alive"]:
+		$screen2/class2.modulate = Color(1.0, 1.0, 1.0, 0.500)
+		$screen2/class2/class2.disabled = true
+	if not playerClass.littleGuys[3]["owned"] or not playerClass.littleGuys[3]["alive"]: 
+		$screen2/class3.modulate = Color(1.0, 1.0, 1.0, 0.500)
+		$screen2/class3/class3.disabled = true
+	if not playerClass.littleGuys[4]["owned"] or not playerClass.littleGuys[4]["alive"]:
+		$screen2/class4.modulate = Color(1.0, 1.0, 1.0, 0.500)
+		$screen2/class4/class4.disabled = true
+	if not playerClass.littleGuys[5]["owned"] or not playerClass.littleGuys[5]["alive"]:
+		$screen2/class5.modulate = Color(1.0, 1.0, 1.0, 0.500)
+		$screen2/class5/class5.disabled = true
+	if not playerClass.littleGuys[6]["owned"] or not playerClass.littleGuys[6]["alive"]:
+		$screen2/class6.modulate = Color(1.0, 1.0, 1.0, 0.500)
+		$screen2/class6/class6.disabled = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$coins_screen/coins.text = str(playerClass.coins)
+	
 	if $screen1/item_1/item_1.button_pressed:
 		select_item(1)
-		#playerClass.littleGuyItems[1].append(1)
 	
 	if $screen1/item_2/item_2.button_pressed:
 		select_item(2)
@@ -20,17 +38,25 @@ func _process(delta):
 	if $screen1/item_3/item_3.button_pressed:
 		select_item(3)
 	
-	if $screen1/character_1/Button.button_pressed:
-		print("Bought Character 1")
+	if $screen1/item_4/item_4.button_pressed:
+		select_item(4)
 	
-	if $screen1/character_2/Button.button_pressed:
-		print("Bought Character 2")
+	if $screen1/item_5/item_5.button_pressed:
+		select_item(5)
 
 func _on_map_pressed():
 	get_tree().change_scene_to_file("res://map_screen.tscn")
 
 
 func select_item(item_num):
+	if playerClass.coins < 25:
+		$error/Label.show()
+		$error/Label.text = "Not Enough Coins For Purchase"
+		await get_tree().create_timer(2).timeout
+		$error/Label.hide()
+		return
+	
+	
 	print("I BOUGHT ITEM %s" % item_num)
 	selected_item = item_num
 	
@@ -38,6 +64,13 @@ func select_item(item_num):
 	$screen2.show()
 
 func select_class(class_num):
+	if len(playerClass.littleGuys[class_num]["items"]) == 4:
+		$error/Label.show()
+		$error/Label.text = "All Item Slots Filled For This Class"
+		await get_tree().create_timer(2).timeout
+		$error/Label.hide()
+		return
+	
 	print("I SELECT CLASS %s" % class_num)
 	selected_class = class_num
 	
@@ -131,7 +164,12 @@ func _on_back_to_items_pressed():
 func _on_confirm_purchase_pressed():
 	$screen3.hide()
 	$screen1.show()
+	playerClass.coins -= 25
 
 
 func _on_back_to_classes_pressed():
-	pass # Replace with function body.
+	playerClass.littleGuys[playerClass.playerClass]["items"].pop_back()
+	playerClass.calc_stats_final()
+	selected_class = 0
+	$screen3.hide()
+	$screen2.show()

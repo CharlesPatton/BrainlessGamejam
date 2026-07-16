@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dq8pk1jfad46l"]
 
 [ext_resource type="Script" uid="uid://dh0sfuuh3ly6a" path="res://melee_enemy.gd" id="1_legso"]
-[ext_resource type="Texture2D" uid="uid://bjgho04we3flh" path="res://sprites/little_guy_1.png" id="2_vn61j"]
+[ext_resource type="Texture2D" uid="uid://bjc1tkwuq0y7p" path="res://sprites/melee_enemy.png" id="2_legso"]
 [ext_resource type="Texture2D" uid="uid://phingl88oxev" path="res://sprites/sword_temp.png" id="3_legso"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_legso"]
-size = Vector2(59, 85)
+size = Vector2(70, 85)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kj6g3"]
 size = Vector2(69.5, 12)
@@ -16,11 +16,12 @@ size = Vector2(69.5, 12)
 script = ExtResource("1_legso")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1507038518]
-position = Vector2(-5.5, -5.5)
+position = Vector2(0, -5.5)
 shape = SubResource("RectangleShape2D_legso")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=43957952]
-texture = ExtResource("2_vn61j")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_legso")
 
 [node name="enemy_weapon" type="Area2D" parent="." unique_id=61340440]
 visible = false

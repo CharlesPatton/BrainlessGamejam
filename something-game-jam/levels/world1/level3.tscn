@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://pa720c2mm72o" path="res://level.gd" id="1_5j4ey"]
 [ext_resource type="PackedScene" uid="uid://b1uqmdbksgec3" path="res://select_class.tscn" id="2_mhxrf"]
 [ext_resource type="Script" uid="uid://blolh3p1a8565" path="res://character_body_2d.gd" id="3_74hg7"]
-[ext_resource type="Texture2D" uid="uid://bjc1tkwuq0y7p" path="res://sprites/c26dbd8e0d813f2963ec16a484acc26f.png" id="4_vs7sk"]
+[ext_resource type="Texture2D" uid="uid://bjgho04we3flh" path="res://sprites/little_guy_1.png" id="4_mhxrf"]
 [ext_resource type="Script" uid="uid://cfxdia83t8i0j" path="res://bullet.gd" id="5_0270w"]
 [ext_resource type="Texture2D" uid="uid://co5okifted1dd" path="res://sprites/icon.svg" id="6_fcow5"]
 [ext_resource type="Texture2D" uid="uid://phingl88oxev" path="res://sprites/sword_temp.png" id="7_bf11j"]
@@ -48,66 +48,64 @@ script = ExtResource("1_5j4ey")
 process_mode = 3
 visible = false
 
-[node name="player" type="CharacterBody2D" parent="." unique_id=1326711384]
+[node name="player" type="CharacterBody2D" parent="." unique_id=1241275762]
 position = Vector2(568, 558)
 script = ExtResource("3_74hg7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=1823817660]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=837883415]
 position = Vector2(-0.5, -7.5)
 shape = SubResource("RectangleShape2D_74hg7")
 
-[node name="Sprite2D" type="Sprite2D" parent="player" unique_id=148857928]
-position = Vector2(-1.75, -7.5)
-scale = Vector2(0.068685375, 0.06505101)
-texture = ExtResource("4_vs7sk")
+[node name="Sprite2D" type="Sprite2D" parent="player" unique_id=35069983]
+position = Vector2(3, -3)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_mhxrf")
 
-[node name="bullet" type="Area2D" parent="player" unique_id=2026867381]
+[node name="bullet" type="Area2D" parent="player" unique_id=1790441589]
 unique_name_in_owner = true
 visible = false
 position = Vector2(-1, -5)
 collision_layer = 2
 script = ExtResource("5_0270w")
 
-[node name="playerBulletCollision" type="CollisionShape2D" parent="player/bullet" unique_id=77881294]
+[node name="playerBulletCollision" type="CollisionShape2D" parent="player/bullet" unique_id=1814029136]
 shape = SubResource("RectangleShape2D_vs7sk")
 
-[node name="Sprite2D" type="Sprite2D" parent="player/bullet" unique_id=446755744]
+[node name="Sprite2D" type="Sprite2D" parent="player/bullet" unique_id=455043512]
 position = Vector2(-9.536743e-07, 1.000001)
 scale = Vector2(0.11718753, 0.12109376)
 texture = ExtResource("6_fcow5")
 
-[node name="Timer" type="Timer" parent="player/bullet" unique_id=1247767907]
+[node name="Timer" type="Timer" parent="player/bullet" unique_id=81051367]
 
-[node name="ShootCoolDown" type="Timer" parent="player" unique_id=1055778342]
+[node name="ShootCoolDown" type="Timer" parent="player" unique_id=794207849]
 
-[node name="weapon" type="Area2D" parent="player" unique_id=1182570182]
+[node name="weapon" type="Area2D" parent="player" unique_id=363332473]
 visible = false
 position = Vector2(1, -5)
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player/weapon" unique_id=75907081]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/weapon" unique_id=1702578523]
 position = Vector2(34.5625, -2)
 shape = SubResource("RectangleShape2D_0270w")
 disabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="player/weapon" unique_id=836491750]
+[node name="Sprite2D" type="Sprite2D" parent="player/weapon" unique_id=1182412412]
 rotation = 1.5707964
 scale = Vector2(1, 1.5233233)
 texture = ExtResource("7_bf11j")
 
-[node name="swingCooldown" type="Timer" parent="player" unique_id=960607284]
+[node name="swingCooldown" type="Timer" parent="player" unique_id=1606742443]
 wait_time = 0.5
 
-[node name="playerHitBox" type="Area2D" parent="player" unique_id=701188326]
+[node name="playerHitBox" type="Area2D" parent="player" unique_id=1916757014]
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player/playerHitBox" unique_id=1214068591]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/playerHitBox" unique_id=1032810596]
 position = Vector2(-0.5, -7.5)
 shape = SubResource("RectangleShape2D_fcow5")
 
-[node name="player_bullets" type="Node2D" parent="player" unique_id=1868892965]
-
-[node name="hitpoints" type="Label" parent="player" unique_id=1138330056]
+[node name="hitpoints" type="Label" parent="player" unique_id=1390671492]
 offset_left = -20.0
 offset_top = -61.0
 offset_right = 20.0
@@ -115,6 +113,9 @@ offset_bottom = -38.0
 label_settings = SubResource("LabelSettings_bf11j")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="player_bullets" type="Node2D" parent="." unique_id=598982956]
+position = Vector2(568, 558)
 
 [node name="enemies" type="Node2D" parent="." unique_id=1391203920]
 

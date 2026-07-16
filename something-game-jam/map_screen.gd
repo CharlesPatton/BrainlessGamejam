@@ -18,18 +18,22 @@ func _ready() -> void:
 	
 	
 	if globalObject.levels_beaten > 0:
+		playerClass.littleGuys[3]["owned"] = true
 		level1.modulate = Color(0, 125, 0)
 		level2.modulate = Color(0, 0, 0)
 	
 	if globalObject.levels_beaten > 1:
+		playerClass.littleGuys[4]["owned"] = true
 		level2.modulate = Color(0, 125, 0)
 		level3.modulate = Color(0, 0, 0)
 	
 	if globalObject.levels_beaten > 2:
+		playerClass.littleGuys[5]["owned"] = true
 		level3.modulate = Color(0, 125, 0)
 		level4.modulate = Color(0, 0, 0)
 	
 	if globalObject.levels_beaten > 3:
+		playerClass.littleGuys[6]["owned"] = true
 		level4.modulate = Color(0, 125, 0)
 		level5.modulate = Color(0, 0, 0)
 	
@@ -46,7 +50,7 @@ func _process(delta: float) -> void:
 		if globalObject.levels_beaten == 0:
 			globalObject.num_enemies = 3
 			globalObject.numberOfRounds = 3
-			globalObject.map = "blank"
+			globalObject.coins += 50
 			get_tree().change_scene_to_file("res://levels/world1/level1.tscn")
 		else:
 			flash_button_error($level1)
@@ -55,7 +59,7 @@ func _process(delta: float) -> void:
 		if globalObject.levels_beaten == 1:
 			globalObject.num_enemies = 4
 			globalObject.numberOfRounds = 4
-			globalObject.map = "2shields"
+			globalObject.coins += 100
 			get_tree().change_scene_to_file("res://levels/world1/level2.tscn")
 		else:
 			flash_button_error($level2)
@@ -64,29 +68,30 @@ func _process(delta: float) -> void:
 		if globalObject.levels_beaten == 2:
 			globalObject.num_enemies = 5
 			globalObject.numberOfRounds = 5
-			globalObject.map = "coolMap"
+			globalObject.coins += 150
 			get_tree().change_scene_to_file("res://levels/world1/level3.tscn")
 		else:
 			flash_button_error($level3)
 		
 	if $level4/Button.button_pressed:
 		if globalObject.levels_beaten == 3:
-			globalObject.num_enemies = 10
+			globalObject.num_enemies = 6
 			globalObject.numberOfRounds = 5
-			globalObject.map = "blank"
+			globalObject.coins += 200
 			get_tree().change_scene_to_file("res://levels/world1/level4.tscn")
 		else:
 			flash_button_error($level4)
 		
 	if $level5/Node2D/Button.button_pressed:
 		if globalObject.levels_beaten == 4:
-			#level5.isBossRoom = true
-			#level5.next_level = level1 #make it the next map
-			#level5.num_enemies = 1
-			#level5.numberOfRounds = 1
+			globalObject.num_enemies = 8
+			globalObject.numberOfRounds = 6
 			get_tree().change_scene_to_file("res://levels/world1/level5.tscn")
 		else:
 			flash_button_error($level5)
+	
+	if globalObject.levels_beaten == 5:
+		get_tree().change_scene_to_file("res://win_screen.tscn")
 
 
 

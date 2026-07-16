@@ -81,7 +81,7 @@ func explode_bomb():
 	explosion.show()
 	explosion.get_node("explosion_collision").disabled = false
 	
-	await get_tree().create_timer(0.25).timeout
+	await get_tree().create_timer(0.5).timeout
 	
 	for area in $explosion.get_overlapping_areas():
 		if area.name == "playerHitBox":

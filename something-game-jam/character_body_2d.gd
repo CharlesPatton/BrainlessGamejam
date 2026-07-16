@@ -8,7 +8,11 @@ var canSwing = true
 var player_stats = playerClass.updated_stats
 var initial_health = player_stats["Health"]
 
+func _ready():
+	$Sprite2D.texture = load("res://sprites/little_guy_%s.png" % [playerClass.playerClass])
+
 func _process(delta: float) -> void:
+	player_stats = playerClass.updated_stats
 	$hitpoints.text = str(player_stats["Health"])
 	if player_stats["Health"] <= initial_health / 3:
 		$hitpoints.label_settings.font_color = Color(255, 0, 0)
@@ -38,7 +42,7 @@ func shoot(delta):
 	if Input.is_action_pressed("shoot") and canShoot:
 		canShoot = false
 		var copyb = bullet.duplicate()
-		$player_bullets.add_child(copyb)
+		get_parent().get_node("player_bullets").add_child(copyb)
 		copyb.show()
 		copyb.global_position = global_position
 		var direction = (get_global_mouse_position() - global_position).normalized()

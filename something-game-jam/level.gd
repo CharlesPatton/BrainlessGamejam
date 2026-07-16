@@ -33,6 +33,7 @@ func _process(delta: float) -> void:
 		print("ENEMIES GONE")
 		if curr_round == numberOfRounds:
 			playerClass.levels_beaten += 1
+			playerClass.revive_guys()
 			get_tree().change_scene_to_file("res://map_screen.tscn")
 		print("NEW ROUND")
 		enemies_spawned = 0
@@ -44,7 +45,7 @@ func _process(delta: float) -> void:
 		playerClass.num_alive_guys -= 1
 		print(playerClass.littleGuys)
 		if playerClass.num_alive_guys == 0:
-			get_tree().change_scene_to_file("res://map.tscn")
+			get_tree().change_scene_to_file("res://end_screen.tscn")
 		else:
 			pause_game()
 

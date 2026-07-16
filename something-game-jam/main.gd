@@ -15,7 +15,7 @@ func _ready():
 	initialize_encounter(true)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_pressed("pause"):
 		pause_game()
 		

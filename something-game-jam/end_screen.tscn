@@ -1,5 +1,10 @@
 [gd_scene format=3 uid="uid://bqa5lkb4t7he3"]
 
+[ext_resource type="Script" uid="uid://hw36ll5ouofs" path="res://end_screen.gd" id="1_my301"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3iaq5"]
+font_size = 40
+
 [node name="end_screen" type="Control" unique_id=78783407]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +12,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_my301")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1871066693]
+
+[node name="fade" type="ColorRect" parent="CanvasLayer" unique_id=505517545]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="background" type="Sprite2D" parent="CanvasLayer" unique_id=901445743]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=921843610]
+offset_left = 421.0
+offset_top = 66.0
+offset_right = 731.0
+offset_bottom = 121.0
+text = "YOU DIED LOL"
+label_settings = SubResource("LabelSettings_3iaq5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=599456812]
+offset_left = 437.0
+offset_top = 266.0
+offset_right = 752.0
+offset_bottom = 325.0
+text = "Back to Title"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

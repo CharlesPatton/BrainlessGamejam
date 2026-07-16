@@ -53,8 +53,8 @@ var littleGuys = {
 	},
 }
 
-var num_guys = 1
-var num_alive_guys = 1
+var num_guys = 2
+var num_alive_guys = 2
 
 
 var game_paused = false
@@ -108,22 +108,20 @@ func calc_items():
 		return
 	
 	for item in littleGuys[playerClass]["items"]:
-		if item == 1:
+		if item == 1: #Winged Boots
 			updated_stats["Speed"] += 2
 			updated_stats["MeleeSpeed"] -= 0.05
 			updated_stats["RangeSpeed"] -= 0.05
-		elif item == 2:
+		elif item == 2: #Shield
 			updated_stats["Health"] += 20
-		elif item == 3:
+		elif item == 3: #Axe
 			updated_stats["MeleeDamage"] += 3
-		
-		#CAN'T DO THE REST IN THE FUTURE, BUT THIS IS FOR NOW
-		#elif item == 4:
-			#updated_stats["Speed"] += 0.5
-		#elif item == 5:
-			#updated_stats["MeleeSpeed"] -= 0.05
-		#elif item == 6:
-			#updated_stats["RangeSpeed"] -= 0.1
+		elif item == 4: #Dual Blades
+			updated_stats["Speed"] *= 1.5
+			updated_stats["MeleeSpeed"] /= 2
+		elif item == 5: #Guns
+			updated_stats["RangeDamage"] += 2
+			updated_stats["RangeSpeed"] /= 2
 
 	print(updated_stats)
 
@@ -131,3 +129,61 @@ func calc_stats_final():
 	updated_stats = base_stats.duplicate()
 	calc_items()
 	calc_class()
+	
+
+func reset():
+	updated_stats = {}
+	playerClass = 1
+	coins = 0
+	littleGuys = {
+		1: {
+			owned = true,
+			alive = true,
+			items = [],
+		},
+		2: {
+			owned = true,
+			alive = true,
+			items = [],
+		},
+		3: {
+			owned = false,
+			alive = true,
+			items = [],
+		},
+		4: {
+			owned = false,
+			alive = true,
+			items = [],
+		},
+		5: {
+			owned = false,
+			alive = true,
+			items = [],
+		},
+		6: {
+			owned = false,
+			alive = true,
+			items = [],
+		},
+	}
+	
+	num_guys = 2
+	num_alive_guys = 2
+
+
+	game_paused = false
+
+
+	num_enemies
+	numberOfRounds
+	map
+
+	levels_beaten = 0
+	
+	calc_stats_final()
+
+func revive_guys():
+	for i in range(1, 7):
+		if not littleGuys[i]['alive']:
+			littleGuys[i]['alive'] = true

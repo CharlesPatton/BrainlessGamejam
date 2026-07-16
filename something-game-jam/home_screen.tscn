@@ -1,5 +1,11 @@
 [gd_scene format=3 uid="uid://di6bq2ledtabx"]
 
+[ext_resource type="Script" uid="uid://bv67ji4hwj3jr" path="res://home_screen.gd" id="1_olt8n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_peulp"]
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+
 [node name="home_screen" type="Control" unique_id=1809921731]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +13,31 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_olt8n")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1837999127]
+
+[node name="fade" type="ColorRect" parent="CanvasLayer" unique_id=490474625]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="background" type="Sprite2D" parent="CanvasLayer" unique_id=1507691217]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=689407630]
+offset_left = 421.0
+offset_top = 66.0
+offset_right = 731.0
+offset_bottom = 121.0
+text = "Little Guy Game"
+label_settings = SubResource("LabelSettings_peulp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=1222750616]
+offset_left = 437.0
+offset_top = 266.0
+offset_right = 752.0
+offset_bottom = 325.0
+text = "Start Game"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

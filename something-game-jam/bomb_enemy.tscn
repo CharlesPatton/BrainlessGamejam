@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://q0jv5fqp1ru6"]
 
 [ext_resource type="Script" uid="uid://bfkhq07ukxgc4" path="res://bomb_enemy.gd" id="1_eg3es"]
-[ext_resource type="Texture2D" uid="uid://cxbtoxclpsih4" path="res://sprites/little_guy_2.png" id="1_h2kpn"]
+[ext_resource type="Texture2D" uid="uid://cw23jifwwpo5b" path="res://sprites/bomb_enemy.png" id="2_eg3es"]
 [ext_resource type="Texture2D" uid="uid://dfrap1h7sq68c" path="res://sprites/bomb.png" id="2_nh1tc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dk8rs"]
@@ -23,7 +23,9 @@ position = Vector2(-5.5, -6)
 shape = SubResource("RectangleShape2D_dk8rs")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1444469183]
-texture = ExtResource("1_h2kpn")
+position = Vector2(-3, -5)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("2_eg3es")
 
 [node name="bomb" type="Area2D" parent="." unique_id=1282509962]
 visible = false
@@ -40,7 +42,6 @@ texture = ExtResource("2_nh1tc")
 
 [node name="explosion" type="Area2D" parent="." unique_id=957653806]
 visible = false
-light_mask = 4
 
 [node name="explosion_collision" type="CollisionShape2D" parent="explosion" unique_id=687694265]
 position = Vector2(0, 6)

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b1uqmdbksgec3"]
 
 [ext_resource type="Script" uid="uid://da5d2380hwfwg" path="res://select_class.gd" id="1_2rt7b"]
-[ext_resource type="Texture2D" uid="uid://bjc1tkwuq0y7p" path="res://sprites/c26dbd8e0d813f2963ec16a484acc26f.png" id="1_4sjfc"]
+[ext_resource type="Texture2D" uid="uid://bjc1tkwuq0y7p" path="res://sprites/melee_enemy.png" id="1_4sjfc"]
 [ext_resource type="Texture2D" uid="uid://bjgho04we3flh" path="res://sprites/little_guy_1.png" id="2_ep2a8"]
 [ext_resource type="Texture2D" uid="uid://cxbtoxclpsih4" path="res://sprites/little_guy_2.png" id="3_hy404"]
 [ext_resource type="Texture2D" uid="uid://c4d5xn46mjwto" path="res://sprites/little_guy_3.png" id="4_fmjc1"]

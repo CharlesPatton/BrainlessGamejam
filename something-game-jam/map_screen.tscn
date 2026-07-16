@@ -94,14 +94,6 @@ icon = ExtResource("3_vmmbu")
 flat = true
 metadata/_edit_use_anchors_ = true
 
-[node name="tempLabel" type="Label" parent="." unique_id=355864717]
-offset_left = 81.0
-offset_top = 108.0
-offset_right = 1056.0
-offset_bottom = 131.0
-text = "left to right click order, random might be too much work maybe just make 3 of these maps and have it be predetermined with 
-random items. also the shop will go here eventually"
-
 [node name="shop" type="Button" parent="." unique_id=2039056394]
 visible = false
 offset_left = 551.0

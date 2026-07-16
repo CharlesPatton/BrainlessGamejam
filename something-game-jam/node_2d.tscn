@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://b82kay58w7l47" path="res://main.gd" id="1_d21ai"]
 [ext_resource type="Script" uid="uid://blolh3p1a8565" path="res://character_body_2d.gd" id="1_epypp"]
-[ext_resource type="Texture2D" uid="uid://bjc1tkwuq0y7p" path="res://sprites/c26dbd8e0d813f2963ec16a484acc26f.png" id="2_0hol4"]
 [ext_resource type="PackedScene" uid="uid://b1uqmdbksgec3" path="res://select_class.tscn" id="2_4d7sh"]
 [ext_resource type="Texture2D" uid="uid://djvqjk5takxg0" path="res://sprites/OIP.webp" id="3_q6r6c"]
 [ext_resource type="Texture2D" uid="uid://co5okifted1dd" path="res://sprites/icon.svg" id="4_0hol4"]
@@ -71,8 +70,7 @@ shape = SubResource("RectangleShape2D_kdubu")
 
 [node name="Sprite2D" type="Sprite2D" parent="player" unique_id=1104222069]
 position = Vector2(-1.75, -7.5)
-scale = Vector2(0.068685375, 0.06505101)
-texture = ExtResource("2_0hol4")
+texture = ExtResource("10_ir8iy")
 
 [node name="bullet" type="Area2D" parent="player" unique_id=205223086]
 unique_name_in_owner = true

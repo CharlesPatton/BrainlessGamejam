@@ -3,23 +3,23 @@
 [ext_resource type="Script" uid="uid://pa720c2mm72o" path="res://level.gd" id="1_10ahk"]
 [ext_resource type="PackedScene" uid="uid://b1uqmdbksgec3" path="res://select_class.tscn" id="2_idu7t"]
 [ext_resource type="Script" uid="uid://blolh3p1a8565" path="res://character_body_2d.gd" id="3_7f5ji"]
-[ext_resource type="Texture2D" uid="uid://bjc1tkwuq0y7p" path="res://sprites/c26dbd8e0d813f2963ec16a484acc26f.png" id="4_0dfo4"]
+[ext_resource type="Texture2D" uid="uid://bjgho04we3flh" path="res://sprites/little_guy_1.png" id="4_idu7t"]
 [ext_resource type="Script" uid="uid://cfxdia83t8i0j" path="res://bullet.gd" id="5_g7yd7"]
 [ext_resource type="Texture2D" uid="uid://co5okifted1dd" path="res://sprites/icon.svg" id="6_6h6ec"]
 [ext_resource type="Texture2D" uid="uid://phingl88oxev" path="res://sprites/sword_temp.png" id="7_dtkpw"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_idu7t"]
-size = Vector2(53, 57)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7f5ji"]
+size = Vector2(53, 57)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0dfo4"]
-size = Vector2(70.875, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7yd7"]
+size = Vector2(70.875, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6h6ec"]
 size = Vector2(53, 57)
 
-[sub_resource type="LabelSettings" id="LabelSettings_6h6ec"]
+[sub_resource type="LabelSettings" id="LabelSettings_dtkpw"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_466ve"]
 vertices = PackedVector2Array(903.1328, 151.0625, 828.8828, 151.0625, 657.5, 149.25, 657.5, 90.75, 1150, -14.1015625, 903.1328, 522.9375, 1150, 659.03906, 2.7734375, 663.9531, 828.8828, 522.9375, 248.25, 510.3828, 171.75, 510.3828, -12.7578125, -26.882813, 171.75, 231.63281, 352.5, 149.25, 248.25, 231.63281, 352.5, 90.75)
@@ -45,73 +45,74 @@ script = ExtResource("1_10ahk")
 process_mode = 3
 visible = false
 
-[node name="player" type="CharacterBody2D" parent="." unique_id=463984648]
+[node name="player" type="CharacterBody2D" parent="." unique_id=823855702]
 position = Vector2(568, 558)
 script = ExtResource("3_7f5ji")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=1394361570]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=1006743472]
 position = Vector2(-0.5, -7.5)
-shape = SubResource("RectangleShape2D_idu7t")
+shape = SubResource("RectangleShape2D_7f5ji")
 
-[node name="Sprite2D" type="Sprite2D" parent="player" unique_id=1919794020]
-position = Vector2(-1.75, -7.5)
-scale = Vector2(0.068685375, 0.06505101)
-texture = ExtResource("4_0dfo4")
+[node name="Sprite2D" type="Sprite2D" parent="player" unique_id=1068173410]
+position = Vector2(3, -3)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_idu7t")
 
-[node name="bullet" type="Area2D" parent="player" unique_id=276246445]
+[node name="bullet" type="Area2D" parent="player" unique_id=564475194]
 unique_name_in_owner = true
 visible = false
 position = Vector2(-1, -5)
 collision_layer = 2
 script = ExtResource("5_g7yd7")
 
-[node name="playerBulletCollision" type="CollisionShape2D" parent="player/bullet" unique_id=217402301]
-shape = SubResource("RectangleShape2D_7f5ji")
+[node name="playerBulletCollision" type="CollisionShape2D" parent="player/bullet" unique_id=403212527]
+shape = SubResource("RectangleShape2D_0dfo4")
 
-[node name="Sprite2D" type="Sprite2D" parent="player/bullet" unique_id=1634047544]
+[node name="Sprite2D" type="Sprite2D" parent="player/bullet" unique_id=1449280048]
 position = Vector2(-9.536743e-07, 1.000001)
 scale = Vector2(0.11718753, 0.12109376)
 texture = ExtResource("6_6h6ec")
 
-[node name="Timer" type="Timer" parent="player/bullet" unique_id=1332891844]
+[node name="Timer" type="Timer" parent="player/bullet" unique_id=1816106381]
 
-[node name="ShootCoolDown" type="Timer" parent="player" unique_id=918768473]
+[node name="ShootCoolDown" type="Timer" parent="player" unique_id=1458345978]
 
-[node name="weapon" type="Area2D" parent="player" unique_id=2072791390]
+[node name="weapon" type="Area2D" parent="player" unique_id=305045707]
 visible = false
 position = Vector2(1, -5)
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player/weapon" unique_id=631474377]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/weapon" unique_id=331204179]
 position = Vector2(34.5625, -2)
-shape = SubResource("RectangleShape2D_0dfo4")
+shape = SubResource("RectangleShape2D_g7yd7")
 disabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="player/weapon" unique_id=543919675]
+[node name="Sprite2D" type="Sprite2D" parent="player/weapon" unique_id=1916599295]
 rotation = 1.5707964
 scale = Vector2(1, 1.5233233)
 texture = ExtResource("7_dtkpw")
 
-[node name="swingCooldown" type="Timer" parent="player" unique_id=1409708665]
+[node name="swingCooldown" type="Timer" parent="player" unique_id=2056618886]
 wait_time = 0.5
 
-[node name="playerHitBox" type="Area2D" parent="player" unique_id=132704463]
+[node name="playerHitBox" type="Area2D" parent="player" unique_id=438602192]
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player/playerHitBox" unique_id=2083714995]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/playerHitBox" unique_id=285558118]
 position = Vector2(-0.5, -7.5)
-shape = SubResource("RectangleShape2D_g7yd7")
+shape = SubResource("RectangleShape2D_6h6ec")
 
-[node name="player_bullets" type="Node2D" parent="player" unique_id=841716768]
-
-[node name="hitpoints" type="Label" parent="player" unique_id=1493034951]
+[node name="hitpoints" type="Label" parent="player" unique_id=1644956171]
 offset_left = -20.0
 offset_top = -61.0
 offset_right = 20.0
 offset_bottom = -38.0
-label_settings = SubResource("LabelSettings_6h6ec")
+label_settings = SubResource("LabelSettings_dtkpw")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="player_bullets" type="Node2D" parent="." unique_id=793119087]
+position = Vector2(568, 558)
 
 [node name="enemies" type="Node2D" parent="." unique_id=846574490]
 
